@@ -1,0 +1,15 @@
+F01;Combo A;2 dui ga, 2 hambuger;77999
+F02;Combo B;3 dui ga, 1 hambuger;77999
+F03;Combo C;2 dui ga, 2 hambuger;99999
+F04;Hambuger Size M;Hambuger co nho, 1 hambuger;49999
+F05;Hambuger Size L;Hambuger co vua, 1 hambuger;59999
+F06;Hambuger Size XL;Hambuger co lon, 1 hambuger;69999
+F07;Ga Lac Size M;Ga Lac co nho, 1 Ga Lac;29999
+F08;Ga Lac Size L;Ga Lac co vua, 1 Ga Lac;39999
+F09;Ga Lac Size XL;Ga Lac co lon, 1 Ga Lac;49999
+F10;Khoai tay chien Size M;Khoai tay chien co nho, 1 Khoai tay chien;29999
+F11;Khoai tay chien Size L;Khoai tay chien co vua, 1 Khoai tay chien;39999
+F12;Khoai tay chien Size XL;Khoai tay chien co lon, 1 Khoai tay chien;49999
+F13;Salad Size M;Salad co nho, 1 Salad;15999
+F14;Salad Size L;Salad co vua, 1 Salad;20999
+F15;Salad Size XL;Salad co lon, 1 Salad;25999

@@ -1,0 +1,10 @@
+NV01;Le Van Vu;39 Phu Tho Quan 11;0909780921;20;NV ban hang;10.000.000vnd
+NV03;Le Gia Hao;14 Nguyen Huu Canh Quan BT;0903120923;27;NV quan ly;15.000.000vnd
+NV99;Dinh Le Trieu;999 Truong Chinh, TpHCm;0989767865;29;NV ban hang;10.000.000vnd
+NV05;Nguyen Anh Kiet;76 Vo Van Kiet Quan 8;0901310925;28;NV giao hang;8.000.000vnd
+NV06;Tran Nguyen Loc;1099 Nguyen Van Linh Quan 8;0908650926;23;NV giao hang;8.000.000vnd
+NV07;Pham Hong;2 Le Duan Quan 1;0903220927;29;NV ban hang;10.000.000vnd
+NV08;Phan Tan Dat;555 Le Van Viet Quan TD;0905670928;23;NV giao hang;8.000.000vnd
+NV09;Vu Van Thanh;1049 Pham Van Dong Quan GV;0901230929;30;NV quan ly;15.000.000vnd
+NV17;Tran Gia Bao;15 Ton Duc Thang, Tp HCM;0987654231;28;Nv giao hang;8.000.000vnd
+NV17;Le Anh Tai;Phu Tho, Quan 11, TpHCM;0987654321;30;Nv giao hang;8.000.000vnd
