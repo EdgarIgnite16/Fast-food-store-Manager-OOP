@@ -97,6 +97,22 @@ public class NhanVien extends Person{
         Luong = "????";
     }
 
+    public void ChucVuBanHang() {
+        this.ChucVu = "NV ban hang";
+        this.Luong = "10.000.000vnd";
+    }
+
+    public void ChucVuGiaoHang() {
+        this.ChucVu = "NV giao hang";
+        this.Luong = "12.000.000vnd";
+    }
+
+    public void ChucVuQuanLy() {
+        this.ChucVu = "NV quan ly";
+        this.Luong = "15.000.000vnd";
+    }
+
+
     public void xuly(String a) {
         String []chrt= a.split(";");
         idNV = chrt[0];

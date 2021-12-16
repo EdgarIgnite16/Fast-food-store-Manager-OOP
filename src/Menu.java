@@ -97,12 +97,12 @@ public class Menu {
 
                 case 2:
                     System.out.println("\nBan da chon Sua thong tin nhan vien");
-
+                    dsnv.changeDSNV();
                     break;
 
                 case 3:
                     System.out.println("\nBan da chon Xoa thong tin nhan vien");
-
+                    dsnv.deleteDSNV();
                     break;
 
                 case 4:

@@ -341,5 +341,76 @@ public class DS_NhanVien {
     }
 
     // ------------------------------------------------------------------------------------- //
+    // sua thong tin nhan vien
+    public void changeDSNV() {
+        Matcher check;
+        String temp;
+        do {
+            System.out.print("Nhap ma nhan vien can tim: ");
+            temp = new Scanner(System.in).nextLine();
+            String c = "^NV[0-9]{2}$";
+            Pattern b= Pattern.compile(c);
+            check = b.matcher(temp);
+        }
+        while(!check.find());
 
+        for(int i=0;i<n;i++) {
+            String key= dsnv[i].getIdNV();
+            if(key.contentEquals(temp)) {
+                System.out.println("Sua thong tin nhan vien !");
+                NhanVien nv = new NhanVien();
+                nv.insertNV();
+
+                int selectX;
+                do {
+                    System.out.println("+---------------------------------------------+");
+                    System.out.println("|                Thay doi Chuc vu             |");
+                    System.out.println("| -------------------=====--------------------|");
+                    System.out.println("| 1. Them nhan vien Ban hang                  |");
+                    System.out.println("| 2. Them nhan vien Giao hang                 |");
+                    System.out.println("| 3. Them nhan vien Quan ly                   |");
+                    System.out.println("+---------------------------------------------+");
+                    System.out.print("Nhap vao lua chon: ");
+                    selectX = Integer.parseInt(new Scanner(System.in).nextLine());
+
+                    switch (selectX) {
+                        case 1: nv.ChucVuBanHang(); break;
+                        case 2: nv.ChucVuGiaoHang(); break;
+                        case 3: nv.ChucVuQuanLy(); break;
+                    }
+                }while(selectX < 1 || selectX > 3);
+
+                dsnv[i] = nv;
+                break;
+            }
+        }
+        updateDSNV();
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    // xoa thong tin nhan vien
+    public void deleteDSNV() {
+        Matcher check;
+        String temp;
+        do {
+            System.out.print("Nhap ma nhan vien can tim: ");
+            temp = new Scanner(System.in).nextLine();
+            String c = "^NV[0-9]{2}$";
+            Pattern b= Pattern.compile(c);
+            check = b.matcher(temp);
+        }
+        while(!check.find());
+
+        for(int i=0;i<n;i++) {
+            String key= dsnv[i].getIdNV();
+            if(key.contentEquals(temp)) {
+                for(int j=i;j<n-1;j++) {
+                    dsnv[j] = dsnv[j+1];
+                }
+                n--;
+                dsnv = Arrays.copyOf(dsnv, n);
+            }
+        }
+        updateDSNV();
+    }
 }
