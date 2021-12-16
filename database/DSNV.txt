@@ -7,4 +7,4 @@ NV07;Pham Hong;2 Le Duan Quan 1;0903220927;29;NV ban hang;10.000.000vnd
 NV08;Phan Tan Dat;555 Le Van Viet Quan TD;0905670928;23;NV giao hang;12.000.000vnd
 NV09;Vu Van Thanh;1049 Pham Van Dong Quan GV;0901230929;30;NV quan ly;15.000.000vnd
 NV17;Tran Gia Bao;15 Ton Duc Thang, Tp HCM;0987654231;28;Nv giao hang;12.000.000vnd
-NV17;Le Anh Tai;Phu Tho, Quan 11, TpHCM;0987654321;30;Nv giao hang;12.000.000vnd
+NV18;Le Anh Tai;Phu Tho, Quan 11, TpHCM;0987654321;30;Nv giao hang;12.000.000vnd
