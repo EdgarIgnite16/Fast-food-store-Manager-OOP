@@ -112,7 +112,6 @@ public class NhanVien extends Person{
         this.Luong = "15.000.000vnd";
     }
 
-
     public void xuly(String a) {
         String []chrt= a.split(";");
         idNV = chrt[0];

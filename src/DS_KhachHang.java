@@ -7,27 +7,27 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DS_NhanVien {
+public class DS_KhachHang {
     private int n;
-    private NhanVien[] dsnv;
+    private KhachHang[] dskh;
 
-    public DS_NhanVien() {
+    public DS_KhachHang() {
         n = 0;
-        dsnv = null;
+        dskh = null;
     }
 
     public void printLine() {
-        for(int j=0;j<130;j++) {
+        for(int j=0;j<154;j++) {
             System.out.print("=");
         }
     }
 
     // ------------------------------------------------------------------------------------- //
-    // dem so luong nv
-    public int countNV() {
+    // dem so luong kh
+    public int countKH() {
         int count = 0;
         try {
-            FileInputStream file = new FileInputStream("./database/DSNV.txt");
+            FileInputStream file = new FileInputStream("./database/DSKH.txt");
             InputStreamReader reader = new InputStreamReader(file, StandardCharsets.UTF_8);
             BufferedReader buffer = new BufferedReader(reader);
             String line = null;
@@ -38,20 +38,20 @@ public class DS_NhanVien {
                 n = count;
 
             }catch(IOException ex) {
-                Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
             }
         }catch (FileNotFoundException ex) {
-            Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return count;
     }
 
     // ------------------------------------------------------------------------------------- //
-    // doc dsnv
-    public void readDSNV() {
+    // doc dskh
+    public void readDSKH() {
         try {
-            FileInputStream file = new FileInputStream("./database/DSNV.txt");
+            FileInputStream file = new FileInputStream("./database/DSKH.txt");
             InputStreamReader reader = new InputStreamReader(file, StandardCharsets.UTF_8);
             BufferedReader buffer = new BufferedReader(reader);
 
@@ -59,39 +59,39 @@ public class DS_NhanVien {
             int dem = 0;
 
             try {
-                n = countNV();
-                dsnv = new NhanVien[n];
+                n = countKH();
+                dskh = new KhachHang[n];
                 int i = 0;
                 while((line = buffer.readLine()) != null) {
-                    dsnv[i] = new NhanVien();
-                    dsnv[i].xuly(line);
+                    dskh[i] = new KhachHang();
+                    dskh[i].xuly(line);
                     i++;
                 }
 
             }catch(IOException ex) {
-                Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
             }
         }catch (FileNotFoundException ex) {
-            Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     // ------------------------------------------------------------------------------------- //
-    // in ra dsnv
-    public void printDSNV() {
+    // in ra dskh
+    public void printDSKH() {
         printLine();
-        System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+        System.out.printf("\n| %-10s %-30s %-40s %-20s %-25s %-20s |\n",
+                "Ma KH","Ho Ten","Dia Chi","Tuoi","So dien thoai", "Loai khach hang");
         for(int i=0;i<n;i++) {
-            dsnv[i].output();
+            dskh[i].output();
         }
         printLine();
         System.out.println("");
     }
 
     // ------------------------------------------------------------------------------------- //
-    // tim kiem trong dsnv
-    public void searchDSNV() {
+    // tim kiem trong dskh
+    public void searchDSKH() {
         Matcher check;
         String temp;
         int select;
@@ -99,11 +99,11 @@ public class DS_NhanVien {
         do {
             System.out.println("");
             System.out.println("+---------------------------------------------+");
-            System.out.println("|              Tim kiem trong DSNV            |");
+            System.out.println("|              Tim kiem trong DSKH            |");
             System.out.println("| -------------------=====--------------------|");
-            System.out.println("| 1. Tim kiem theo Id NV                      |");
-            System.out.println("| 2. Tim kiem theo Ten NV                     |");
-            System.out.println("| 3. Tim kiem theo Chuc vu                    |");
+            System.out.println("| 1. Tim kiem theo Id KH                      |");
+            System.out.println("| 2. Tim kiem theo Ten KH                     |");
+            System.out.println("| 3. Tim kiem theo Loai Khach Hang            |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
             System.out.print("Nhap vao lua chon: ");
@@ -111,23 +111,23 @@ public class DS_NhanVien {
 
             switch(select) {
                 case 1:
-                    System.out.println("\nBan da chon tim kiem theo id NV");
+                    System.out.println("\nBan da chon tim kiem theo id KH");
                     do {
                         System.out.print("Nhap ma nhan vien can tim: ");
                         temp = new Scanner(System.in).nextLine();
-                        String c = "^NV[0-9]{2}$";
+                        String c = "KH[0-9]{2}$";
                         Pattern b= Pattern.compile(c);
                         check = b.matcher(temp);
                     }
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                            "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                    System.out.printf("\n| %-10s %-30s %-40s %-20s %-25s %s-20 |\n",
+                            "Ma KH","Ho Ten","Dia Chi","Tuoi","So dien thoai", "Loai khach hang");
                     for(int i=0;i<n;i++) {
-                        String key = dsnv[i].getIdNV();
+                        String key = dskh[i].getIdKH();
                         if(key.contentEquals(temp)) {
-                            dsnv[i].output();
+                            dskh[i].output();
                             break;
                         }
                     }
@@ -135,7 +135,7 @@ public class DS_NhanVien {
                     break;
 
                 case 2:
-                    System.out.println("\nBan da chon tim kiem theo ten NV");
+                    System.out.println("\nBan da chon tim kiem theo ten KH");
                     do {
                         System.out.print("Nhap ten nhan vien can tim: ");
                         temp = new Scanner(System.in).nextLine();
@@ -146,30 +146,29 @@ public class DS_NhanVien {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                            "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                    System.out.printf("\n| %-10s %-30s %-40s %-20s %-25s %s-20 |\n",
+                            "Ma KH","Ho Ten","Dia Chi","Tuoi","So dien thoai", "Loai khach hang");
                     for(int i=0;i<n;i++) {
-                        String key = dsnv[i].getTen().toLowerCase();
+                        String key = dskh[i].getTen().toLowerCase();
                         if(key.contains(temp.toLowerCase())) {
-                            dsnv[i].output();
+                            dskh[i].output();
                         }
                     }
                     printLine();
                     break;
 
                 case 3:
-                    System.out.println("\nBan da chon tim kiem theo Chuc vu NV");
+                    System.out.println("\nBan da chon tim kiem theo Loai KH");
                     String temp2 = null;
                     int select2;
 
                     do {
                         System.out.println("");
                         System.out.println("+---------------------------------------------+");
-                        System.out.println("|              Tim kiem trong DSNV            |");
+                        System.out.println("|              Tim kiem trong DSKH            |");
                         System.out.println("| -------------------=====--------------------|");
-                        System.out.println("| 1. NV Quan Ly                               |");
-                        System.out.println("| 2. NV Ban Hang                              |");
-                        System.out.println("| 3. NV Giao Hang                             |");
+                        System.out.println("| 1. Khach hang thong thuong                  |");
+                        System.out.println("| 2. Khach hang VIP                           |");
                         System.out.println("| 0. Tro ve                                   |");
                         System.out.println("+---------------------------------------------+");
                         System.out.print("Nhap vao lua chon: ");
@@ -177,49 +176,35 @@ public class DS_NhanVien {
 
                         switch (select2) {
                             case 1:
-                                System.out.println("\nBan da chon tim kiem theo danh sach nv quan li");
-                                temp2 = "NV quan ly";
+                                System.out.println("\nBan da chon tim kiem theo danh sach khach hang Binh Thuong");
+                                temp2 = "KH Normal";
                                 printLine();
-                                System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                                        "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                                System.out.printf("\n| %-10s %-30s %-40s %-20s %-25s %-20s |\n",
+                                        "Ma KH","Ho Ten","Dia Chi","Tuoi","So dien thoai", "Loai khach hang");
                                 for(int i=0;i<n;i++) {
-                                    String key = dsnv[i].getChucVu().toLowerCase();
+                                    String key = dskh[i].getLoaiKH().toLowerCase();
                                     if(key.contentEquals(temp2.toLowerCase())) {
-                                        dsnv[i].output();
+                                        dskh[i].output();
                                     }
                                 }
                                 printLine();
                                 break;
 
                             case 2:
-                                System.out.println("\nBan da chon tim kiem theo danh sach nv ban hang");
-                                temp2 = "NV ban hang";
+                                System.out.println("\nBan da chon tim kiem theo danh sach khach hang VIP");
+                                temp2 = "KH VIP";
                                 printLine();
-                                System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                                        "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                                System.out.printf("\n| %-10s %-30s %-40s %-20s %-25s %-20s |\n",
+                                        "Ma KH","Ho Ten","Dia Chi","Tuoi","So dien thoai", "Loai khach hang");
                                 for(int i=0;i<n;i++) {
-                                    String key = dsnv[i].getChucVu().toLowerCase();
+                                    String key = dskh[i].getLoaiKH().toLowerCase();
                                     if(key.contentEquals(temp2.toLowerCase())) {
-                                        dsnv[i].output();
+                                        dskh[i].output();
                                     }
                                 }
                                 printLine();
                                 break;
 
-                            case 3:
-                                System.out.println("\nBan da chon tim kiem theo danh sach nv giao hang");
-                                temp2 = "NV giao hang";
-                                printLine();
-                                System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                                        "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
-                                for(int i=0;i<n;i++) {
-                                    String key = dsnv[i].getChucVu().toLowerCase();
-                                    if(key.contentEquals(temp2.toLowerCase())) {
-                                        dsnv[i].output();
-                                    }
-                                }
-                                printLine();
-                                break;
 
                             case 0:
                                 System.out.println("\nTro ve");
@@ -245,59 +230,58 @@ public class DS_NhanVien {
 
     // ------------------------------------------------------------------------------------- //
     // update dsnv
-    public void updateDSNV() {
+    public void updateDSKH() {
         FileOutputStream fos = null;
         try {
-            fos = new FileOutputStream("./database/DSNV.txt");
+            fos = new FileOutputStream("./database/DSKH.txt");
             for(int i=0;i<n;i++) {
-                String line = dsnv[i].xulyLuu();
+                String line = dskh[i].xulyLuu();
                 try{
                     byte[] infor = line.getBytes("utf8");
                     try {
                         fos.write(infor);
                     } catch (IOException ex) {
-                        Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             System.out.println("Cap nhat du lieu thanh cong !!!");
         }catch (FileNotFoundException ex) {
-            Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally {
             if(fos != null) {
                 try {
                     fos.close();
                 } catch (IOException ex) {
-                    Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }
 
     // ------------------------------------------------------------------------------------- //
-    public void addNV(NhanVien nv) {
-        dsnv = Arrays.copyOf(dsnv, n+1);
+    public void addKH(KhachHang kh) {
+        dskh = Arrays.copyOf(dskh, n+1);
         for(int i=0;i<n+1;i++) {
-            if(i == n) dsnv[i] = nv;
+            if(i == n) dskh[i] = kh;
         }
         n++;
-        updateDSNV();
+        updateDSKH();
     }
 
     // ------------------------------------------------------------------------------------- //
-    // them nhan vien
-    public void insertDSNV() {
+    // them khach hang
+    public void insertDSKH() {
         int select2;
         do {
             System.out.println("+---------------------------------------------+");
             System.out.println("|                Them nhan vien               |");
             System.out.println("| -------------------=====--------------------|");
-            System.out.println("| 1. Them nhan vien Ban hang                  |");
-            System.out.println("| 2. Them nhan vien Giao hang                 |");
-            System.out.println("| 3. Them nhan vien Quan ly                   |");
+            System.out.println("| 1. Them khach hang Binh thuong              |");
+            System.out.println("| 2. Them khach hang VIP                      |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
             System.out.print("Nhap vao lua chon: ");
@@ -305,27 +289,17 @@ public class DS_NhanVien {
 
             switch (select2) {
                 case 1:
-                    NhanVien nv1 = new NVBanHang();
-                    nv1.insertNV();
-                    nv1.ChucVu();
-                    nv1.Luong();
-                    addNV(nv1);
+                    KhachHang kh1 = new KHNormal();
+                    kh1.insertKH();
+                    kh1.LoaiKH();
+                    addKH(kh1);
                     break;
 
                 case 2:
-                    NhanVien nv2 = new NVGiaoHang();
-                    nv2.insertNV();
-                    nv2.ChucVu();
-                    nv2.Luong();
-                    addNV(nv2);
-                    break;
-
-                case 3:
-                    NhanVien nv3 = new NVQuanLy();
-                    nv3.insertNV();
-                    nv3.ChucVu();
-                    nv3.Luong();
-                    addNV(nv3);
+                    KhachHang kh2 = new KHVIP();
+                    kh2.insertKH();
+                    kh2.LoaiKH();
+                    addKH(kh2);
                     break;
 
                 case 0:
@@ -340,76 +314,74 @@ public class DS_NhanVien {
     }
 
     // ------------------------------------------------------------------------------------- //
-    // sua thong tin nhan vien
-    public void changeDSNV() {
+    // sua thong tin khach hang
+    public void changeDSKH() {
         Matcher check;
         String temp;
         do {
-            System.out.print("Nhap ma nhan vien thay doi: ");
+            System.out.print("Nhap ma khach hang can thay doi: ");
             temp = new Scanner(System.in).nextLine();
-            String c = "^NV[0-9]{2}$";
+            String c = "^KH[0-9]{2}$";
             Pattern b= Pattern.compile(c);
             check = b.matcher(temp);
         }
         while(!check.find());
 
         for(int i=0;i<n;i++) {
-            String key= dsnv[i].getIdNV();
+            String key= dskh[i].getIdKH();
             if(key.contentEquals(temp)) {
-                System.out.println("Sua thong tin nhan vien !");
-                NhanVien nv = new NhanVien();
-                nv.insertNV();
+                System.out.println("Sua thong tin khach hang !");
+                KhachHang kh = new KhachHang();
+                kh.insertKH();
 
                 int selectX;
                 do {
                     System.out.println("+---------------------------------------------+");
-                    System.out.println("|                Thay doi Chuc vu             |");
+                    System.out.println("|           Thay doi Loai Khach hang          |");
                     System.out.println("| -------------------=====--------------------|");
-                    System.out.println("| 1. Thay doi thanh nhan vien Ban hang        |");
-                    System.out.println("| 2. Thay doi thanh nhan vien Giao hang       |");
-                    System.out.println("| 3. Thay doi thanh nhan vien Quan Ly         |");
+                    System.out.println("| 1. Thay doi thanh khach hang Normal         |");
+                    System.out.println("| 2. Thay doi thanh khach hang VIP            |");
                     System.out.println("+---------------------------------------------+");
                     System.out.print("Nhap vao lua chon: ");
                     selectX = Integer.parseInt(new Scanner(System.in).nextLine());
 
                     switch (selectX) {
-                        case 1: nv.ChucVuBanHang(); break;
-                        case 2: nv.ChucVuGiaoHang(); break;
-                        case 3: nv.ChucVuQuanLy(); break;
+                        case 1: kh.KhachHangNor(); break;
+                        case 2: kh.KhachHangVIP(); break;
                     }
                 }while(selectX < 1 || selectX > 3);
 
-                dsnv[i] = nv;
+                dskh[i] = kh;
                 break;
             }
         }
-        updateDSNV();
+        updateDSKH();
     }
 
     // ------------------------------------------------------------------------------------- //
     // xoa thong tin nhan vien
-    public void deleteDSNV() {
+    public void deleteDSKH() {
         Matcher check;
         String temp;
         do {
-            System.out.print("Nhap ma nhan vien can xoa: ");
+            System.out.print("Nhap ma khach hang can xoa: ");
             temp = new Scanner(System.in).nextLine();
-            String c = "^NV[0-9]{2}$";
+            String c = "^KH[0-9]{2}$";
             Pattern b= Pattern.compile(c);
             check = b.matcher(temp);
         }
         while(!check.find());
 
         for(int i=0;i<n;i++) {
-            String key= dsnv[i].getIdNV();
+            String key= dskh[i].getIdKH();
             if(key.contentEquals(temp)) {
                 for(int j=i;j<n-1;j++) {
-                    dsnv[j] = dsnv[j+1];
+                    dskh[j] = dskh[j+1];
                 }
                 n--;
-                dsnv = Arrays.copyOf(dsnv, n);
+                dskh = Arrays.copyOf(dskh, n);
             }
         }
-        updateDSNV();
+        updateDSKH();
     }
 }

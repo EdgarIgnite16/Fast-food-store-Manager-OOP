@@ -127,6 +127,57 @@ public class Menu {
     }
 
     public void dsKhachHang() {
+        int select;
+        do {
+            System.out.println("+---------------------------------------------+");
+            System.out.println("|              Danh sach khach hang           |");
+            System.out.println("| -------------------=====--------------------|");
+            System.out.println("| 1. Them thong tin khach hang                |");
+            System.out.println("| 2. Sua thong tin khach hang                 |");
+            System.out.println("| 3. Xoa thong tin khach hang                 |");
+            System.out.println("| 4. Tim kiem thong tin khach hang            |");
+            System.out.println("| 5. Xuat thong tin khach hang                |");
+            System.out.println("| 0. Tro ve                                   |");
+            System.out.println("+---------------------------------------------+");
+            System.out.print("Nhap vao lua chon: ");
+            select = Integer.parseInt(new Scanner(System.in).nextLine());
+            DS_KhachHang dskh = new DS_KhachHang();
+            dskh.readDSKH();
 
+            switch (select) {
+                case 1:
+                    System.out.println("\nBan da chon Them thong tin khach hang");
+                    dskh.insertDSKH();
+                    break;
+
+                case 2:
+                    System.out.println("\nBan da chon Sua thong tin khach hang");
+                    dskh.changeDSKH();
+                    break;
+
+                case 3:
+                    System.out.println("\nBan da chon Xoa thong tin khach hang");
+                    dskh.deleteDSKH();
+                    break;
+
+                case 4:
+                    System.out.println("\nBan da chon Tim kiem thong tin khach hang");
+                    dskh.searchDSKH();
+                    break;
+
+                case 5:
+                    System.out.println("\nBan da chon Xuat ra danh sach khach hang");
+                    dskh.printDSKH();
+                    break;
+
+                case 0:
+                    System.out.println("\nTro ve");
+                    break;
+
+                default:
+                    System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
+                    break;
+            }
+        }while (select != 0);
     }
 }
