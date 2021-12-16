@@ -1,0 +1,12 @@
+D01;Pepsi Size M;Pepsi co nho, 1 Pepsi;10999
+D02;Pepsi Size L;Pepsi co vua, 1 Pepsi;13999
+D03;Pepsi Size XL;Pepsi co lon, 1 Pepsi;15999
+D04;Coca Cola Size M;Coca Cola co nho, 1 Coca Cola;10999
+D05;Coca Cola Size L;Coca Cola co vua, 1 Coca Cola;13999
+D06;Coca Cola Size XL;Coca Cola co lon, 1 Coca Cola;15999
+D07;Pepsi Size M;Pepsi co nho, 1 Pepsi;10999
+D08;Pepsi Size L;Pepsi co vua, 1 Pepsi;13999
+D09;Pepsi Size XL;Pepsi co lon, 1 Pepsi;15999
+D10;Tra tac Size M;Tra tac co nho, 1 Tra tac;10999
+D11;Tra tac Size L;Tra tac co vua, 1 Tra tac;13999
+D12;Tra tac Size XL;Tra tac co lon, 1 Tra tac;15999
