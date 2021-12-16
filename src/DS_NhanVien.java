@@ -1,5 +1,7 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +23,7 @@ public class DS_NhanVien {
         }
     }
 
+    // ------------------------------------------------------------------------------------- //
     // dem so luong nv
     public int countNV() {
         int count = 0;
@@ -56,9 +59,9 @@ public class DS_NhanVien {
             int dem = 0;
 
             try {
-                int i = 0;
                 n = countNV();
                 dsnv = new NhanVien[n];
+                int i = 0;
                 while((line = buffer.readLine()) != null) {
                     dsnv[i] = new NhanVien();
                     dsnv[i].xuly(line);
@@ -76,8 +79,8 @@ public class DS_NhanVien {
     // in ra dsnv
     public void printDSNV() {
         printLine();
-        System.out.printf("\n| %-10s %-20s %-30s %-15s %-10s %-15s %-20s |\n",
-                "Ma NV","Ho Ten","Dia Chi","So dien thoai","Tuoi","Chuc vu","Luong");
+        System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
+                "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
         for(int i=0;i<n;i++) {
             dsnv[i].output();
         }
@@ -117,8 +120,8 @@ public class DS_NhanVien {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n| %-10s %-20s %-30s %-15s %-10s %-15s %-20s |\n",
-                            "Ma NV","Ho Ten","Dia Chi","So dien thoai","Tuoi","Chuc vu","Luong");
+                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
+                            "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
                     for(int i=0;i<n;i++) {
                         String key = dsnv[i].getIdNV();
                         if(key.contentEquals(temp)) {
@@ -141,8 +144,8 @@ public class DS_NhanVien {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n| %-10s %-20s %-30s %-15s %-10s %-15s %-20s |\n",
-                            "Ma NV","Ho Ten","Dia Chi","So dien thoai","Tuoi","Chuc vu","Luong");
+                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
+                            "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
                     for(int i=0;i<n;i++) {
                         String key = dsnv[i].getTen().toLowerCase();
                         if(key.contains(temp.toLowerCase())) {
@@ -175,8 +178,8 @@ public class DS_NhanVien {
                                 System.out.println("\nBan da chon tim kiem theo danh sach nv quan li");
                                 temp2 = "NV quan ly";
                                 printLine();
-                                System.out.printf("\n| %-10s %-20s %-30s %-15s %-10s %-15s %-20s |\n",
-                                        "Ma NV","Ho Ten","Dia Chi","So dien thoai","Tuoi","Chuc vu","Luong");
+                                System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
+                                        "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
                                 for(int i=0;i<n;i++) {
                                     String key = dsnv[i].getChucVu().toLowerCase();
                                     if(key.contentEquals(temp2.toLowerCase())) {
@@ -190,8 +193,8 @@ public class DS_NhanVien {
                                 System.out.println("\nBan da chon tim kiem theo danh sach nv ban hang");
                                 temp2 = "NV ban hang";
                                 printLine();
-                                System.out.printf("\n| %-10s %-20s %-30s %-15s %-10s %-15s %-20s |\n",
-                                        "Ma NV","Ho Ten","Dia Chi","So dien thoai","Tuoi","Chuc vu","Luong");
+                                System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
+                                        "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
                                 for(int i=0;i<n;i++) {
                                     String key = dsnv[i].getChucVu().toLowerCase();
                                     if(key.contentEquals(temp2.toLowerCase())) {
@@ -205,8 +208,8 @@ public class DS_NhanVien {
                                 System.out.println("\nBan da chon tim kiem theo danh sach nv giao hang");
                                 temp2 = "NV giao hang";
                                 printLine();
-                                System.out.printf("\n| %-10s %-20s %-30s %-15s %-10s %-15s %-20s |\n",
-                                        "Ma NV","Ho Ten","Dia Chi","So dien thoai","Tuoi","Chuc vu","Luong");
+                                System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
+                                        "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
                                 for(int i=0;i<n;i++) {
                                     String key = dsnv[i].getChucVu().toLowerCase();
                                     if(key.contentEquals(temp2.toLowerCase())) {
@@ -238,5 +241,47 @@ public class DS_NhanVien {
         }while(select != 0);
     }
 
+    // update dsnv
+    public void updateDSNV() {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream("./database/DSNV.txt");
+            for(int i=0;i<n;i++) {
+                String line = dsnv[i].xulyLuu();
+                try{
+                    byte[] infor = line.getBytes("utf8");
+                    try {
+                        fos.write(infor);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Cap nhat du lieu thanh cong !!!");
+        }catch (FileNotFoundException ex) {
+            Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            if(fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
+    // them nhan vien
+    public void addNV(NhanVien nv) {
+        dsnv = Arrays.copyOf(dsnv, n+1);
+        for(int i=0;i<n+1;i++) {
+            if(i == n) dsnv[i] = nv;
+        }
+        n++;
+        updateDSNV();
+    }
 
 }

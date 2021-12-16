@@ -4,8 +4,8 @@ import java.util.regex.Pattern;
 
 public class NhanVien extends Person{
     private String idNV;
-    private String ChucVu;
-    private String Luong;
+    protected String ChucVu;
+    protected String Luong;
 
     public NhanVien() {
         super();
@@ -69,32 +69,32 @@ public class NhanVien extends Person{
         // nhap vao tuoi nhan vien
         do {
             System.out.print("Nhap vao tuoi nhan vien: ");
-            String age = new Scanner(System.in).nextLine();
-            super.setTuoi(age);
+            String tuoi = new Scanner(System.in).nextLine();
+            super.setTuoi(tuoi);
             // regex
-            String c = "[^0-9]";
+            String c = "^[0-9]{2}$";
             Pattern a = Pattern.compile(c);
-            check = a.matcher(age);
+            check = a.matcher(tuoi);
         }while(!check.find());
 
         // nhap vao so dien thoai
         do {
             System.out.print("Nhap vao SDT nhan vien: ");
             String sdt = new Scanner(System.in).nextLine();
-            super.setTuoi(sdt);
+            super.setSDT(sdt);
             // regex
-            String c = "[^0-9]";
-            Pattern a = Pattern.compile(c);
-            check = a.matcher(sdt);
+            String c = "^0[0-9]{9}$";
+            Pattern b = Pattern.compile(c);
+            check = b.matcher(sdt);
         }while(!check.find());
     }
 
     public void ChucVu() {
-        this.ChucVu = "????";
+        ChucVu = "????";
     }
 
     public void Luong() {
-        this.Luong = "????";
+        Luong = "????";
     }
 
     public void xuly(String a) {
@@ -102,21 +102,21 @@ public class NhanVien extends Person{
         idNV = chrt[0];
         String TenNV = chrt[1]; super.setTen(TenNV);
         String DiaChiNV = chrt[2]; super.setDiaChi(DiaChiNV);
-        String SdtNV = chrt[3]; super.setSDT(SdtNV);
-        String tuoiNV = chrt[4]; super.setTuoi(tuoiNV);
+        String tuoiNV = chrt[3]; super.setTuoi(tuoiNV);
+        String SdtNV = chrt[4]; super.setSDT(SdtNV);
         ChucVu = chrt[5];
         Luong = chrt[6];
     }
 
-    public String xylyLuu() {
-        return String.format("%s;%s;%s%s;%s;%s;%s\n",
-                idNV, super.getTen(), super.getDiaChi(), super.getSDT(), super.getTuoi(), ChucVu, Luong);
+    public String xulyLuu() {
+        return String.format("%s;%s;%s;%s;%s;%s;%s\n",
+                idNV, super.getTen(), super.getDiaChi(), super.getTuoi(), super.getSDT(), ChucVu, Luong);
     }
 
     @Override
     public String toString() {
-        return String.format("| %-10s %-20s %-30s %-15s %-10s %-15s %-20s |",
-                idNV, super.getTen(), super.getDiaChi(), super.getSDT(), super.getTuoi(), ChucVu, Luong);
+        return String.format("| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |",
+                idNV, super.getTen(), super.getDiaChi(), super.getTuoi(), super.getSDT(), ChucVu, Luong);
     }
 
     public void output() {
