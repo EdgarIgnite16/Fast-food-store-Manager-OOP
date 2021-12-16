@@ -91,54 +91,8 @@ public class Menu {
 
             switch (select) {
                 case 1:
-                    int select2;
                     System.out.println("\nBan da chon Them thong tin nhan vien");
-                    do {
-                        System.out.println("+---------------------------------------------+");
-                        System.out.println("|                Them nhan vien               |");
-                        System.out.println("| -------------------=====--------------------|");
-                        System.out.println("| 1. Them nhan vien Ban hang                  |");
-                        System.out.println("| 2. Them nhan vien Giao hang                 |");
-                        System.out.println("| 3. Them nhan vien Quan ly                   |");
-                        System.out.println("| 0. Tro ve                                   |");
-                        System.out.println("+---------------------------------------------+");
-                        System.out.print("Nhap vao lua chon: ");
-                        select2 = Integer.parseInt(new Scanner(System.in).nextLine());
-
-                        switch (select2) {
-                            case 1:
-                                NhanVien nv1 = new NVBanHang();
-                                nv1.insertNV();
-                                nv1.ChucVu();
-                                nv1.Luong();
-                                dsnv.addNV(nv1);
-                                break;
-
-                            case 2:
-                                NhanVien nv2 = new NVGiaoHang();
-                                nv2.insertNV();
-                                nv2.ChucVu();
-                                nv2.Luong();
-                                dsnv.addNV(nv2);
-                                break;
-
-                            case 3:
-                                NhanVien nv3 = new NVQuanLy();
-                                nv3.insertNV();
-                                nv3.ChucVu();
-                                nv3.Luong();
-                                dsnv.addNV(nv3);
-                                break;
-
-                            case 0:
-                                System.out.println("\nTro ve");
-                                break;
-
-                            default:
-                                System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
-                                break;
-                        }
-                    }while (select2 != 0);
+                    dsnv.insertDSNV();
                     break;
 
                 case 2:

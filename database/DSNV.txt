@@ -12,3 +12,5 @@ NV15;Tran Nguyen Loc;174/4 Dao Tong Nguyen;23;0707029548;Nv quan ly;15.000.000vn
 NV99;Tran loc;1238 quan 7;28;0707029548;NV ban hang;10.000.000vnd
 NV99;Tran Van Hai;1824 Quan 7;29;0909028974;NV quan ly;15.000.000vnd
 NV88;Nguyen Van Lam;128123 Quan 12;27;0707029548;NV ban hang;10.000.000vnd
+NV77;Read;123 quan 12 ;88;0707029548;NV giao hang;12.000.000vnd
+NV88;Tran Hai Nam;98123 PHu Nhuan;24;0202049577;NV ban hang;10.000.000vnd
