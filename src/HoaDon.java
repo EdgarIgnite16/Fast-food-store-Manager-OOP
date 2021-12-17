@@ -118,10 +118,4 @@ public class HoaDon {
     public String xulyLuu() {
         return String.format("%s;%s;%s;%s;%s\n",idHD,tenKH,tenNV,thanhTien,NgayHoaDon);
     }
-    public static void main(String[] args) {
-        HoaDon a=new HoaDon();
-        a.nhapHD();
-        System.out.println(a.xulyLuu());
-    }
-    
 }
