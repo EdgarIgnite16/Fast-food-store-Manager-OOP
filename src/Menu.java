@@ -1,8 +1,13 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Menu {
     public void mainMenu() {
+        Matcher check;
+        String selectTemp;
         int select;
+
         do {
             System.out.println("+---------------------------------------------+");
             System.out.println("| Quan li cua hang thuc an nhanh va nuoc uong |");
@@ -13,8 +18,18 @@ public class Menu {
             System.out.println("| 4. Danh sach khach hang                     |");
             System.out.println("| 0. Thoat chuong trinh                       |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select = Integer.parseInt(new Scanner(System.in).nextLine());
+
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
+
             switch(select) {
                 case 1:
                     System.out.println("Ban da chon Danh sach hoa don !");
@@ -50,7 +65,10 @@ public class Menu {
 
 
     public void dsSanPham() {
+        Matcher check;
+        String selectTemp;
         int select;
+
         do {
             System.out.println("+---------------------------------------------+");
             System.out.println("|              Danh sach san pham             |");
@@ -62,15 +80,27 @@ public class Menu {
             System.out.println("| 5. Xuat thong tin san pham                  |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select = Integer.parseInt(new Scanner(System.in).nextLine());
+
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
 
 
         }while (select != 0);
     }
 
     public void dsNhanVien() {
+        Matcher check;
+        String selectTemp;
         int select;
+
         do {
             System.out.println("+---------------------------------------------+");
             System.out.println("|              Danh sach nhan vien            |");
@@ -82,8 +112,16 @@ public class Menu {
             System.out.println("| 5. Xuat thong tin nhan vien                 |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select = Integer.parseInt(new Scanner(System.in).nextLine());
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
             DS_NhanVien dsnv = new DS_NhanVien();
             dsnv.readDSNV();
 
@@ -125,7 +163,10 @@ public class Menu {
     }
 
     public void dsKhachHang() {
+        Matcher check;
+        String selectTemp;
         int select;
+
         do {
             System.out.println("+---------------------------------------------+");
             System.out.println("|              Danh sach khach hang           |");
@@ -137,8 +178,17 @@ public class Menu {
             System.out.println("| 5. Xuat thong tin khach hang                |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select = Integer.parseInt(new Scanner(System.in).nextLine());
+
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
             DS_KhachHang dskh = new DS_KhachHang();
             dskh.readDSKH();
 
@@ -180,7 +230,10 @@ public class Menu {
     }
     
     public void dsHoaDon() {
+        Matcher check;
+        String selectTemp;
         int select;
+
         do {
             System.out.println("+---------------------------------------------+");
             System.out.println("|              Danh sach hoa don              |");
@@ -192,8 +245,17 @@ public class Menu {
             System.out.println("| 5. Xuat danh sach hoa don                   |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select = Integer.parseInt(new Scanner(System.in).nextLine());
+
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
             DS_HoaDon dshd = new DS_HoaDon();
             dshd.readDSHD();
 

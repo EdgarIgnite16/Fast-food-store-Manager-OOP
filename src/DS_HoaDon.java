@@ -6,14 +6,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 public class DS_HoaDon {
     private int n;
     private HoaDon[] dshd;
-    Scanner sc=new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
+
     public DS_HoaDon() {
         n = 0;
         dshd = null;
     }
+
     public int countHD() {
         int count = 0;
         try {
@@ -36,6 +39,7 @@ public class DS_HoaDon {
 
         return count;
     }
+
     public void readDSHD() {
         try {
             FileInputStream file = new FileInputStream("./database/DSHD.txt");
@@ -60,29 +64,34 @@ public class DS_HoaDon {
             Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    static void printLine() {
+
+    public static void printLine() {
         for(int j=0;j<130;j++) {
             System.out.print("=");
         }
     }
+
     public void printDSHD() {
         printLine();
-        System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n","ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
+        System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n",
+                "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien(VND)","Ngay mua");
         for(int i=0;i<n;i++) {
             dshd[i].output();
         }
         printLine();
         System.out.println();
     }
+
     public void searchDSHD() {
         Matcher check;
         String temp;
+        String selectTemp;
         int select;
 
         do {
             System.out.println();
             System.out.println("+---------------------------------------------+");
-            System.out.println("\u001B[44m|              Tim kiem trong DSNV            |\u001B[0m");
+            System.out.println("\u001B[44m|              Tim kiem trong DSHD            |\u001B[0m");
             System.out.println("| -------------------=====--------------------|");
             System.out.println("| 1. Tim kiem theo Id HD                      |");
             System.out.println("| 2. Tim kiem theo Ten KH                     |");
@@ -90,8 +99,17 @@ public class DS_HoaDon {
             System.out.println("| 4. Tim kiem theo Ten Ngay                   |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select = Integer.parseInt(sc.nextLine());
+
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = sc.nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
 
             switch(select) {
                 case 1:
@@ -194,6 +212,7 @@ public class DS_HoaDon {
             }
         }while(select != 0);
     }
+
     public void updateDSHD() {
         FileOutputStream fos = null;
         try {
@@ -225,6 +244,7 @@ public class DS_HoaDon {
             }
         }
     }
+
     public void addHD(HoaDon hd) {
         dshd = Arrays.copyOf(dshd, n+1);
         for(int i=0;i<n+1;i++) {
@@ -233,13 +253,15 @@ public class DS_HoaDon {
         n++;
         updateDSHD();
     }
+
     public void insertDSHD() {
         System.out.println("\u001B[44m|              Them Hoa Don            |\u001B[0m");
-        HoaDon hd=new HoaDon();
+        HoaDon hd = new HoaDon();
         hd.nhapHD();
         addHD(hd);
         System.out.println("\u001B[44m|      Them Hoa Don thanh cong         |\u001B[0m");
     }
+
     public void changeDSHD() {
         Matcher check;
         String temp;
@@ -250,22 +272,26 @@ public class DS_HoaDon {
             c = "^HD[0-9]{2}$";
             Pattern b= Pattern.compile(c);
             check = b.matcher(temp);        
-        }
-        while(check.find()==false);
-        for(int i=0;i<n;i++)
-        {
-            String key=dshd[i].getIdHD();
-            if(key.contentEquals(temp)==true)
-            {
+        } while(!check.find());
 
+        boolean checking = false;
+        for(int i=0;i<n;i++) {
+            String key=dshd[i].getIdHD();
+            if(key.contentEquals(temp)) {
+                checking = true;
                 HoaDon hd=new HoaDon();
                 System.out.println("Nhap thong tin hoa don");
                 hd.nhapHD();
                 dshd[i]=hd;
             }
         }
-        updateDSHD();
+        if(checking) {
+            updateDSHD();
+        }else {
+            System.out.println("Khong tim thay ma hoa don !");
+        }
     }
+
     public void deleteHD() {
         Matcher check;
         String temp;
@@ -278,9 +304,11 @@ public class DS_HoaDon {
         }
         while(!check.find());
 
+        boolean checking = false;
         for(int i=0;i<n;i++) {
-            String key= dshd[i].getIdHD();
+            String key = dshd[i].getIdHD();
             if(key.contentEquals(temp)) {
+                checking = true;
                 for(int j=i;j<n-1;j++) {
                     dshd[j] = dshd[j+1];
                 }
@@ -288,6 +316,10 @@ public class DS_HoaDon {
                 dshd = Arrays.copyOf(dshd, n);
             }
         }
-        updateDSHD();
+        if(checking) {
+            updateDSHD();
+        }else {
+            System.out.println("Khong tim thay ma don hang !");
+        }
     }
 }
