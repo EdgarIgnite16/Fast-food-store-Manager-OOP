@@ -47,9 +47,7 @@ public class Menu {
         } while (select != 0);
     }
 
-    public void dsHoaDon() {
 
-    }
 
     public void dsSanPham() {
         int select;
@@ -180,4 +178,60 @@ public class Menu {
             }
         }while (select != 0);
     }
+    
+    public void dsHoaDon() {
+        int select;
+        do {
+            System.out.println("+---------------------------------------------+");
+            System.out.println("|              Danh sach hoa don              |");
+            System.out.println("| -------------------=====--------------------|");
+            System.out.println("| 1. Them hoa don                             |");
+            System.out.println("| 2. Sua thong tin hoa don                    |");
+            System.out.println("| 3. Xoa thong tin hoa don                    |");
+            System.out.println("| 4. Tim kiem hoa don                         |");
+            System.out.println("| 5. Xuat danh sach hoa don                   |");
+            System.out.println("| 0. Tro ve                                   |");
+            System.out.println("+---------------------------------------------+");
+            System.out.print("Nhap vao lua chon: ");
+            select = Integer.parseInt(new Scanner(System.in).nextLine());
+            DS_HoaDon dshd = new DS_HoaDon();
+            dshd.readDSHD();
+
+            switch (select) {
+                case 1:
+                    System.out.println("\nBan da chon Them hoa don");
+                    dshd.insertDSHD();
+                    break;
+
+                case 2:
+                    System.out.println("\nBan da chon Sua thong tin hoa don");
+                    dshd.changeDSHD();
+                    break;
+
+                case 3:
+                    System.out.println("\nBan da chon Xoa thong tin hoa don");
+                    dshd.deleteHD();
+                    break;
+
+                case 4:
+                    System.out.println("\nBan da chon Tim kiem tim kiem hoa don");
+                    dshd.searchDSHD();
+                    break;
+
+                case 5:
+                    System.out.println("\nBan da chon Xuat ra danh sach hoa don");
+                    dshd.printDSHD();
+                    break;
+
+                case 0:
+                    System.out.println("\nTro ve");
+                    break;
+
+                default:
+                    System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
+                    break;
+            }
+        }while (select != 0);
+    }
 }
+
