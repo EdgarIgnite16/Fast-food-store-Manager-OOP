@@ -187,8 +187,8 @@ public class DS_NU {
 
     public void xuatDSNU() {
         printline();
-        System.out.printf("\n| %-20s %-25s %-50s %-20s |", "Ma san pham", "Ten san pham",
-                "Chi tiet SP", "Gia");
+        System.out.printf("| %-20s %-25s %-50s %-20s |",
+                "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
         for (int i = 0; i < n; i++) {
             dssp[i].Xuat();
         }

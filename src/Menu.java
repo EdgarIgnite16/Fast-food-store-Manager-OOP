@@ -95,7 +95,7 @@ public class Menu {
                     String selectTempX;
                     do {
                         System.out.println("+---------------------------------------------+");
-                        System.out.println("|       Danh sach san pham thuc an nhanh     |");
+                        System.out.println("|       Danh sach san pham thuc an nhanh      |");
                         System.out.println("| -------------------=====--------------------|");
                         System.out.println("| 1. Them thong tin san pham                  |");
                         System.out.println("| 2. Sua thong tin san pham                   |");
