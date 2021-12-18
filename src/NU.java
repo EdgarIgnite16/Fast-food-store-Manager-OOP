@@ -39,7 +39,7 @@ public class NU extends Product {
     public void Nhap() {
         Matcher c;
         do {
-            System.out.print("Nhap ma san pham UC: ");
+            System.out.print("Nhap ma san pham NU: ");
             IdNU = sc.nextLine();
             String check = "^D[0-9]{2}$";
             Pattern b = Pattern.compile(check);
