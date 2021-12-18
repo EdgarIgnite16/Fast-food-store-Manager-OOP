@@ -14,18 +14,23 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DS_NU {
-
-    Scanner sc = new Scanner(System.in);
     private int n;
     private NU[] dssp;
+    Scanner sc = new Scanner(System.in);
 
     public DS_NU() {
         n = 0;
         dssp = null;
     }
 
-  
-  
+    public void printline() {
+        System.out.println();
+        for (int i = 0; i < 117; i++) {
+            System.out.print("=");
+        }
+        System.out.println();
+    }
+
     public int demNU() {
         int dem = 0;
         try {
@@ -119,15 +124,18 @@ public class DS_NU {
         Matcher c;
         String a;
         do {
-            System.out.println("Nhap ma san pham can xoa: ");
+            System.out.print("Nhap ma san pham can xoa: ");
             a = sc.nextLine();
-            String check = "^SP[0-9]{2}$";
+            String check = "^D[0-9]{2}$";
             Pattern b = Pattern.compile(check);
             c = b.matcher(a);
-        } while (c.find() == false);
+        } while (!c.find());
+
+        boolean checking = false;
         for (int i = 0; i < n; i++) {
             String key = dssp[i].getIdNU();
-            if (key.contentEquals(a) == true) {
+            if (key.contentEquals(a)) {
+                checking = true;
                 for (int j = i; j < n - 1; j++) {
                     dssp[j] = dssp[j + 1];
                 }
@@ -135,30 +143,41 @@ public class DS_NU {
                 dssp = Arrays.copyOf(dssp, n);
             }
         }
-        capNhatDSNU();
+
+        if(checking){
+            capNhatDSNU();
+        }else {
+            System.out.println("Khong tim thay ma san pham !");
+        }
     }
 
     public void suaNU() {
         Matcher c;
         String a;
         do {
-            System.out.println("Nhap ma san pham can sua: ");
+            System.out.print("Nhap ma san pham can sua: ");
             a = sc.nextLine();
-            String check = "^SP[0-9]{2}$";
+            String check = "^D[0-9]{2}$";
             Pattern b = Pattern.compile(check);
             c = b.matcher(a);
-        } while (c.find() == false);
+        } while (!c.find());
 
+        boolean checking = false;
         for (int i = 0; i < n; i++) {
             String key = dssp[i].getIdNU();
-            if (key.contentEquals(a) == true) {
+            if (key.contentEquals(a)) {
+                checking = true;
                 NU sp = new NU();
                 System.out.println("Nhap thong tin san pham");
                 sp.Nhap();
                 dssp[i] = sp;
             }
         }
-        capNhatDSNU();
+        if(checking){
+            capNhatDSNU();
+        }else {
+            System.out.println("Khong tim thay ma san pham !");
+        }
     }
 
     public void timkiemNU() {
@@ -167,16 +186,16 @@ public class DS_NU {
         do {
             System.out.println("Nhap ma san pham can tim: ");
             a = sc.nextLine();
-            String check = "^SP[0-9]{2}$";
+            String check = "^D[0-9]{2}$";
             Pattern b = Pattern.compile(check);
             c = b.matcher(a);
-        } while (c.find() == false);
+        } while (!c.find());
 
         for (int i = 0; i < n; i++) {
             String key = dssp[i].getIdNU();
-            if (key.contentEquals(a) == true) {
+            if (key.contentEquals(a)) {
                 printline();
-                System.out.printf("\n| %-20s %-25s %-50s %-20s |", "Ma san pham", "Ten san pham",
+                System.out.printf("\n| %-20s %-25s %-50s %-15s |", "Ma san pham", "Ten san pham",
                         "Chi tiet SP", "Gia");
                 dssp[i].Xuat();
                 printline();
@@ -187,21 +206,13 @@ public class DS_NU {
 
     public void xuatDSNU() {
         printline();
-        System.out.printf("| %-20s %-25s %-50s %-20s |",
+        System.out.printf("| %-20s %-25s %-50s %-15s |",
                 "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
         for (int i = 0; i < n; i++) {
             dssp[i].Xuat();
         }
         printline();
 
-    }
-
-    public void printline() {
-        System.out.println();
-        for (int i = 0; i < 122; i++) {
-            System.out.print("=");
-        }
-        System.out.println();
     }
 }
 

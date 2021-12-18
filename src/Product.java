@@ -52,17 +52,12 @@ public class Product {
         Product.count = count;
     }
 
-
-
     public void Nhap() {
-
-        System.out.println("Nhap ten san pham: ");
+        System.out.print("Nhap ten san pham: ");
         Ten = sc.nextLine();
-
-        System.out.println("Mo ta san pham (gia, co, toping,...): ");
+        System.out.print("Mo ta san pham (gia, co, toping,...): ");
         ChiTietSP = sc.nextLine();
     }
-
 
     public void Xuat() {
         System.out.printf("\n%-25s %-50\n", Ten, ChiTietSP);

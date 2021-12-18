@@ -23,6 +23,13 @@ public class DS_TAN {
         dssp = null;
     }
 
+    public void printline() {
+        System.out.println();
+        for (int i = 0; i < 117; i++) {
+            System.out.print("=");
+        }
+        System.out.println();
+    }
 
     public int demTAN() {
         int dem = 0;
@@ -45,10 +52,6 @@ public class DS_TAN {
         }
         return dem;
     }
-
-
-
-
 
     public void docDSTAN() {
         try {
@@ -74,10 +77,6 @@ public class DS_TAN {
             Logger.getLogger(DS_TAN.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    
-
-
 
     public void capNhatDSTAN() {
         FileOutputStream fos = null;
@@ -125,15 +124,18 @@ public class DS_TAN {
         Matcher c;
         String a;
         do {
-            System.out.println("Nhap ma san pham can xoa: ");
+            System.out.print("Nhap ma san pham can xoa: ");
             a = sc.nextLine();
-            String check = "^SP[0-9]{2}$";
+            String check = "^F[0-9]{2}$";
             Pattern b = Pattern.compile(check);
             c = b.matcher(a);
-        } while (c.find() == false);
+        } while (!c.find());
+
+        boolean checking = false;
         for (int i = 0; i < n; i++) {
             String key = dssp[i].getIdTAN();
-            if (key.contentEquals(a) == true) {
+            if (key.contentEquals(a)) {
+                checking = true;
                 for (int j = i; j < n - 1; j++) {
                     dssp[j] = dssp[j + 1];
                 }
@@ -141,50 +143,62 @@ public class DS_TAN {
                 dssp = Arrays.copyOf(dssp, n);
             }
         }
-        capNhatDSTAN();
+
+        if(checking) {
+            capNhatDSTAN();
+        }else {
+            System.out.println("Khong tim thay ma san pham !");
+        }
     }
 
     public void suaTAN() {
         Matcher c;
         String a;
         do {
-            System.out.println("Nhap ma san pham can sua: ");
+            System.out.print("Nhap ma san pham can sua: ");
             a = sc.nextLine();
-            String check = "^SP[0-9]{2}$";
+            String check = "^F[0-9]{2}$";
             Pattern b = Pattern.compile(check);
             c = b.matcher(a);
-        } while (c.find() == false);
+        } while (!c.find());
 
+        boolean checking = false;
         for (int i = 0; i < n; i++) {
             String key = dssp[i].getIdTAN();
-            if (key.contentEquals(a) == true) {
+            if (key.contentEquals(a)) {
+                checking = true;
                 TAN sp = new TAN();
                 System.out.println("Nhap thong tin san pham");
                 sp.Nhap();
                 dssp[i] = sp;
             }
         }
-        capNhatDSTAN();
+
+        if(checking) {
+            capNhatDSTAN();
+        }else {
+            System.out.println("Khong tim thay ma san pham !");
+        }
     }
-
-
 
     public void timkiemTAN() {
         Matcher c;
         String a;
         do {
-            System.out.println("Nhap ma san pham can tim: ");
+            System.out.print("Nhap ma san pham can tim: ");
             a = sc.nextLine();
-            String check = "^SP[0-9]{2}$";
+            String check = "^F[0-9]{2}$";
             Pattern b = Pattern.compile(check);
             c = b.matcher(a);
-        } while (c.find() == false);
+        } while (!c.find());
 
+//        boolean checking = false;
         for (int i = 0; i < n; i++) {
             String key = dssp[i].getIdTAN();
-            if (key.contentEquals(a) == true) {
+            if (key.contentEquals(a)) {
+//                checking = true;
                 printline();
-                System.out.printf("\n| %-20s %-25s %-50s %-20s |", "Ma san pham", "Ten san pham",
+                System.out.printf("\n| %-20s %-25s %-50s %-15s |", "Ma san pham", "Ten san pham",
                         "Chi tiet SP", "Gia");
                 dssp[i].Xuat();
                 printline();
@@ -195,19 +209,11 @@ public class DS_TAN {
 
     public void xuatDSTAN() {
         printline();
-        System.out.printf("| %-20s %-25s %-50s %-20s |",
+        System.out.printf("| %-20s %-25s %-50s %-15s |",
                 "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
         for (int i = 0; i < n; i++) {
             dssp[i].Xuat();
         }
         printline();
-    }
-
-    public void printline() {
-        System.out.println();
-        for (int i = 0; i < 122; i++) {
-            System.out.print("=");
-        }
-        System.out.println();
     }
 }

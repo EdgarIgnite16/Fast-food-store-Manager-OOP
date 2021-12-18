@@ -39,22 +39,22 @@ public class TAN extends Product {
     public void Nhap() {
         Matcher c;
         do {
-            System.out.println("Nhap ma san pham: ");
+            System.out.print("Nhap ma san pham TAN: ");
             IdTAN = sc.nextLine();
-            String check = "^SP[0-9]{2}$";
+            String check = "^F[0-9]{2}$";
             Pattern b = Pattern.compile(check);
             c = b.matcher(IdTAN);
-        } while (c.find() == false);
+        } while (!c.find());
 
         ThongtinSP.Nhap();
 
-        System.out.println("Nhap gia thuc an nhanh: ");
+        System.out.print("Nhap gia thuc an nhanh: ");
         Gia = sc.nextLine();
 
     }
 
     public void Xuat() {
-        System.out.printf("\n| %-20s %-25s %-50s %-20s |", IdTAN, ThongtinSP.getTen(), ThongtinSP.getChiTietSP(), Gia);
+        System.out.printf("\n| %-20s %-25s %-50s %-15s |", IdTAN, ThongtinSP.getTen(), ThongtinSP.getChiTietSP(), Gia);
     }
 
     public void xuly(String a) {
