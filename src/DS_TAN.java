@@ -27,7 +27,7 @@ public class DS_TAN {
     public int demTAN() {
         int dem = 0;
         try {
-            FileInputStream file = new FileInputStream("./Database/DSTAN.txt");
+            FileInputStream file = new FileInputStream("./database/DSTAN.txt");
             InputStreamReader reader = new InputStreamReader(file, StandardCharsets.UTF_8);
             BufferedReader buffer = new BufferedReader(reader);
             String line = null;
@@ -82,7 +82,7 @@ public class DS_TAN {
     public void capNhatDSTAN() {
         FileOutputStream fos = null;
         try {
-            fos = new FileOutputStream("./Database/DSTAN.txt");
+            fos = new FileOutputStream("./database/DSTAN.txt");
             for (int i = 0; i < n; i++) {
                 String line = dssp[i].xylyLuu();
                 try {
