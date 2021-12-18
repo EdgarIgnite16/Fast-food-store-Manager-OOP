@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Product {
-    protected String Ten;
-    protected String ChiTietSP;
+    private String Ten;
+    private String ChiTietSP;
     private int stt = 1;
     private static int count = 0;
 
