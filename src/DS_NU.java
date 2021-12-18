@@ -175,7 +175,7 @@ public class DS_NU {
         for (int i = 0; i < n; i++) {
             String key = dssp[i].getIdNU();
             if (key.contentEquals(a) == true) {
-                System.out.println("====================================================");
+                System.out.println("\n====================================================\n");
                 System.out.printf("%-10s %-15s %-25s %-10s %-10s\n", "STT", "Ma san pham", "Ten san pham",
                         "Chi tiet SP", "Gia");
                 dssp[i].Xuat();
@@ -185,7 +185,7 @@ public class DS_NU {
     }
 
     public void xuatDSNU() {
-        System.out.println("====================================================");
+        System.out.println("\n====================================================\n");
         System.out.printf("%-10s %-15s %-25s %-10s %-10s\n", "STT", "Ma san pham", "Ten san pham",
                 "Chi tiet SP", "Gia");
         for (int i = 0; i < n; i++) {
