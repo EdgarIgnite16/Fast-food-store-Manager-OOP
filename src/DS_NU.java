@@ -138,7 +138,7 @@ public class DS_NU {
         capNhatDSNU();
     }
 
-    public void suaSP() {
+    public void suaNU() {
         Matcher c;
         String a;
         do {
