@@ -73,11 +73,8 @@ public class Menu {
             System.out.println("+---------------------------------------------+");
             System.out.println("|              Danh sach san pham             |");
             System.out.println("| -------------------=====--------------------|");
-            System.out.println("| 1. Them thong tin san pham                  |");
-            System.out.println("| 2. Sua thong tin san pham                   |");
-            System.out.println("| 3. Xoa thong tin san pham                   |");
-            System.out.println("| 4. Tim kiem thong tin san pham              |");
-            System.out.println("| 5. Xuat thong tin san pham                  |");
+            System.out.println("| 1. Danh sach san pham thuc anh nhanh        |");
+            System.out.println("| 2. Danh sach san pham nuoc uong             |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
 
@@ -92,7 +89,127 @@ public class Menu {
             while(!check.find());
             select = Integer.parseInt(selectTemp);
 
+            switch (select) {
+                case 1:
+                    int selectX;
+                    String selectTempX;
+                    do {
+                        System.out.println("+---------------------------------------------+");
+                        System.out.println("|       Danh sach san pham thuc an nhanh     |");
+                        System.out.println("| -------------------=====--------------------|");
+                        System.out.println("| 1. Them thong tin san pham                  |");
+                        System.out.println("| 2. Sua thong tin san pham                   |");
+                        System.out.println("| 3. Xoa thong tin san pham                   |");
+                        System.out.println("| 4. Tim kiem thong tin san pham              |");
+                        System.out.println("| 5. Xuat thong tin san pham                  |");
+                        System.out.println("| 0. Tro ve                                   |");
+                        System.out.println("+---------------------------------------------+");
 
+                        // Regex
+                        do {
+                            System.out.print("Nhap vao lua chon: ");
+                            selectTempX = new Scanner(System.in).nextLine();
+                            String c = "^[0-9]{1}";
+                            Pattern b= Pattern.compile(c);
+                            check = b.matcher(selectTempX);
+                        }
+                        while(!check.find());
+                        selectX = Integer.parseInt(selectTempX);
+
+                        switch (selectX) {
+                            case 1:
+                                System.out.println("\nBan da chon Them thong tin thuc an nhanh");
+                                break;
+
+                            case 2:
+                                System.out.println("\nBan da chon Sua thong tin thuc an nhanh");
+                                break;
+
+                            case 3:
+                                System.out.println("\nBan da chon Xoa thong tin thuc an nhanh");
+                                break;
+
+                            case 4:
+                                System.out.println("\nBan da chon Tim kiem thong tin thuc an nhanh");
+                                break;
+
+                            case 5:
+                                System.out.println("\nBan da chon Xuat ra danh sach thuc an nhanh");
+                                break;
+
+                            case 0:
+                                System.out.println("\nTro ve");
+                                break;
+
+                            default:
+                                System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
+                                break;
+                        }
+                    }while(selectX != 0);
+                    break;
+
+                case 2:
+                    int selectY;
+                    String selectTempY;
+                    do {
+                        System.out.println("+---------------------------------------------+");
+                        System.out.println("|          Danh sach san pham nuoc uong       |");
+                        System.out.println("| -------------------=====--------------------|");
+                        System.out.println("| 1. Them thong tin san pham                  |");
+                        System.out.println("| 2. Sua thong tin san pham                   |");
+                        System.out.println("| 3. Xoa thong tin san pham                   |");
+                        System.out.println("| 4. Tim kiem thong tin san pham              |");
+                        System.out.println("| 5. Xuat thong tin san pham                  |");
+                        System.out.println("| 0. Tro ve                                   |");
+                        System.out.println("+---------------------------------------------+");
+
+                        // Regex
+                        do {
+                            System.out.print("Nhap vao lua chon: ");
+                            selectTempY = new Scanner(System.in).nextLine();
+                            String c = "^[0-9]{1}";
+                            Pattern b= Pattern.compile(c);
+                            check = b.matcher(selectTempY);
+                        }
+                        while(!check.find());
+                        selectY = Integer.parseInt(selectTempY);
+
+                        switch (selectY) {
+                            case 1:
+                                System.out.println("\nBan da chon Them thong tin nuoc uong");
+                                break;
+
+                            case 2:
+                                System.out.println("\nBan da chon Sua thong tin nuoc uong");
+                                break;
+
+                            case 3:
+                                System.out.println("\nBan da chon Xoa thong tin nuoc uong");
+                                break;
+
+                            case 4:
+                                System.out.println("\nBan da chon Tim kiem thong tin nuoc uong");
+                                break;
+
+                            case 5:
+                                System.out.println("\nBan da chon Xuat ra danh sach tnuoc uong");
+                                break;
+
+                            case 0:
+                                System.out.println("\nTro ve");
+                                break;
+
+                            default:
+                                System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
+                                break;
+                        }
+                    }while(selectY != 0);
+                    break;
+
+                default:
+                    System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
+                    break;
+            }
         }while (select != 0);
     }
 
