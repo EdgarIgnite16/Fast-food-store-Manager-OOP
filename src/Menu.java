@@ -115,18 +115,26 @@ public class Menu {
                         }
                         while(!check.find());
                         selectX = Integer.parseInt(selectTempX);
+                        DS_TAN dstan = new DS_TAN();
+                        dstan.docDSTAN();
+
 
                         switch (selectX) {
                             case 1:
                                 System.out.println("\nBan da chon Them thong tin thuc an nhanh");
+                                TAN sp = new TAN();
+                                sp.Nhap();
+                                dstan.themTAN(sp);
                                 break;
 
                             case 2:
                                 System.out.println("\nBan da chon Sua thong tin thuc an nhanh");
+                                dstan.suaTAN();
                                 break;
 
                             case 3:
                                 System.out.println("\nBan da chon Xoa thong tin thuc an nhanh");
+                                dstan.xoaTAN();
                                 break;
 
                             case 4:
@@ -135,6 +143,7 @@ public class Menu {
 
                             case 5:
                                 System.out.println("\nBan da chon Xuat ra danh sach thuc an nhanh");
+                                dstan.xuatDSTAN();
                                 break;
 
                             case 0:
@@ -173,26 +182,36 @@ public class Menu {
                         }
                         while(!check.find());
                         selectY = Integer.parseInt(selectTempY);
+                        DS_NU dsnu = new DS_NU();
+                        dsnu.docDSNU();
+
 
                         switch (selectY) {
                             case 1:
                                 System.out.println("\nBan da chon Them thong tin nuoc uong");
+                                NU sp = new NU();
+                                sp.Nhap();
+                                dsnu.themNU(sp);
                                 break;
 
                             case 2:
                                 System.out.println("\nBan da chon Sua thong tin nuoc uong");
+                                dsnu.suaNU();
                                 break;
 
                             case 3:
                                 System.out.println("\nBan da chon Xoa thong tin nuoc uong");
+                                dsnu.xoaNU();
                                 break;
 
                             case 4:
                                 System.out.println("\nBan da chon Tim kiem thong tin nuoc uong");
+                                dsnu.timkiemNU();
                                 break;
 
                             case 5:
                                 System.out.println("\nBan da chon Xuat ra danh sach tnuoc uong");
+                                dsnu.xuatDSNU();
                                 break;
 
                             case 0:
