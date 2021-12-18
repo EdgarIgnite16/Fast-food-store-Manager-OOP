@@ -81,10 +81,10 @@ public class HoaDon {
     static DS_TAN dstan=new DS_TAN();
     static DS_NU dsnu=new DS_NU();
 
-    public void nhapHD()
-    {
+    public void nhapHD() {
         Scanner sc = new Scanner(System.in);
         Matcher c;
+        String TempStr;
 
         do {
             System.out.print("Nhap id hoa don: ");
@@ -110,18 +110,24 @@ public class HoaDon {
             c = b.matcher(tenNV);
         } while(!c.find());
 
-        System.out.print("So luong san pham: ");
-        SoLuong=Integer.parseInt(sc.nextLine());
+        do {
+            System.out.print("So luong san pham: ");
+            TempStr = sc.nextLine();
+            String check = "^[0-99]";
+            Pattern b = Pattern.compile(check);
+            c = b.matcher(TempStr);
+        } while(!c.find());
+        SoLuong = Integer.parseInt(TempStr);
 
-        
         dsnu.docDSNU();
         dstan.docDSTAN();
-        dssp=new Product[SoLuong]; 
+        dssp = new Product[SoLuong];
         
         for (int i=0;i<SoLuong;){ 
-            NU[] SPN=dsnu.getDssp();
-            TAN[] SPTAN=dstan.getDssp();
+            NU[] SPN = dsnu.getDssp();
+            TAN[] SPTAN = dstan.getDssp();
             String MASP;
+
             do {
                 System.out.printf("Nhap ma san pham thu %d: ",i+1);
                 MASP = sc.nextLine();
@@ -129,16 +135,18 @@ public class HoaDon {
                 Pattern b = Pattern.compile(check);
                 c = b.matcher(MASP);
             } while(!c.find());
-            Boolean check=false;
+
+            Boolean check = false;
             // Tim ma san pham trong database
             for (int j = 0; j < SPN.length; j++) {
                 String key = SPN[j].getId();
                 if (key.contentEquals(MASP)) {
                     dssp[i]=SPN[j];
                     thanhTien+=Double.parseDouble(SPN[j].getGia());
-                    check=true;
+                    check = true;
                 }
-            }  
+            }
+
             for (int j = 0; j < SPTAN.length; j++) {
                 String key = SPTAN[j].getId();
                 if (key.contentEquals(MASP)) {
@@ -146,7 +154,8 @@ public class HoaDon {
                     thanhTien+=Double.parseDouble(SPTAN[j].getGia());
                     check=true;
                 }
-            }   
+            }
+
             if (!check) System.out.printf("\u001B[41m| Khong tim thay ma san pham %s |\u001B[0m \n",MASP);
             else i++;   
         }   
@@ -157,9 +166,6 @@ public class HoaDon {
             String check = "^[0-9]{2}/[0-9]{2}/[0-9]{4}$";
             Pattern b = Pattern.compile(check);
             c = b.matcher(NgayHoaDon);
-
-
-
         } while(!c.find());
     }
     
@@ -170,14 +176,14 @@ public class HoaDon {
     }
 
     public void xuly(String a) {
-        String []chrt= a.split(";");
+        String []chrt = a.split(";");
         idHD = chrt[0];
         tenKH = chrt[1];
         tenNV = chrt[2];
         thanhTien = Double.parseDouble(chrt[3]);
         NgayHoaDon = chrt[4];
-        SoLuong=Integer.parseInt(chrt[5]);
-        dssp=new Product[SoLuong];
+        SoLuong = Integer.parseInt(chrt[5]);
+        dssp = new Product[SoLuong];
         dsnu.docDSNU();
         dstan.docDSTAN();
         NU[] SPN=dsnu.getDssp();
@@ -209,6 +215,7 @@ public class HoaDon {
         s+="\n";
         return s;
     }
+
     public void chitietSP() {
         System.out.printf("\u001B[44m| %-20s %-25s %-50s %-28s |\u001B[0m",
         "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");

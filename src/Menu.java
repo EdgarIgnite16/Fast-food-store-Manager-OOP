@@ -421,10 +421,12 @@ public class Menu {
                     System.out.println("\nBan da chon Xuat ra danh sach hoa don");
                     dshd.printDSHD();
                     break;
+
                 case 6:
                     System.out.println("\nBan da chon Xem chi tiet hoa don");
                     dshd.chitietHD();
                     break;
+
                 case 0:
                     System.out.println("\nTro ve");
                     break;
