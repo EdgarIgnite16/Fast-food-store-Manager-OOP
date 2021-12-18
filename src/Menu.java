@@ -210,7 +210,7 @@ public class Menu {
                                 break;
 
                             case 5:
-                                System.out.println("\nBan da chon Xuat ra danh sach tnuoc uong");
+                                System.out.println("\nBan da chon Xuat ra danh sach nuoc uong");
                                 dsnu.xuatDSNU();
                                 break;
 
