@@ -61,12 +61,12 @@ public class TAN extends Product {
     public void xuly(String a) {
         String[] chrt = a.split(";");
         IdTAN = chrt[0];
-        ThongtinSP.Ten = chrt[1];
-        ThongtinSP.ChiTietSP = chrt[2];
+        ThongtinSP.setTen(chrt[1]);
+        ThongtinSP.setChiTietSP(chrt[2]);
         Gia = chrt[3];
     }
 
     public String xylyLuu() {
-        return IdTAN + ";" + ThongtinSP.Ten + ";" + ThongtinSP.ChiTietSP + ";" + Gia + "\n";
+        return IdTAN + ";" + ThongtinSP.getTen() + ";" + ThongtinSP.getChiTietSP() + ";" + Gia + "\n";
     }
 }
