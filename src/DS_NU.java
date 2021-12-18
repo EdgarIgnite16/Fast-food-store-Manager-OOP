@@ -50,7 +50,7 @@ public class DS_NU {
 
     public void docDSNU() {
         try {
-            FileInputStream file = new FileInputStream("./Database/DSNU.txt");
+            FileInputStream file = new FileInputStream("./database/DSNU.txt");
             InputStreamReader reader = new InputStreamReader(file, StandardCharsets.UTF_8);
             BufferedReader buffer = new BufferedReader(reader);
             String line = null;
