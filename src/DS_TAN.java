@@ -144,7 +144,7 @@ public class DS_TAN {
         capNhatDSTAN();
     }
 
-    public void suaSP() {
+    public void suaTAN() {
         Matcher c;
         String a;
         do {
