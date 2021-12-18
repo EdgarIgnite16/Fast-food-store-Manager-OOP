@@ -1,8 +1,10 @@
-HD01;Nguyen Thanh Nha;Nguyen Thanh Quang;171997.0;16/12/2021;3;F01;D03;F01;
-HD02;Nguyen Van B;Nguyen Thanh Quang;88998.0;17/12/2021;2;F01;D04;
-HD03;Tran Minh Quan;Nguyen Thanh Quang;157996.0;17/12/2021;4;D05;F05;D02;F06;
-HD04;Nguyen Van C;Ngo Thanh Van;15999.0;18/12/2021;1;D12;
-HD05;Tran Van Ba;Tran Nguyen Loc;166997.0;17/12/2021;3;F01;D01;F02;
-HD09;Tran Nguyen Bao Long;Tran Nguyen Loc;104996.0;19/12/2021;4;D01;D02;F09;F07;
-HD05;NGuyen Van C;Tran Loc;63998.0;14/02/2020;2;F09;D02;
-HD06;Nguyen ThanH long;Long Nguyen;213996.0;19/12/2021;4;F01;F04;F06;D09;
+HD01;Nguyen Thanh Nha;Nguyen Thanh Quang;171997.0;16/12/2021;giao hang;3;F01;D03;F01;
+HD02;Nguyen Van B;Nguyen Thanh Quang;88998.0;17/12/2021;giao hang;2;F01;D04;
+HD03;Tran Minh Quan;Nguyen Thanh Quang;157996.0;17/12/2021;ban hang;4;D05;F05;D02;F06;
+HD04;Nguyen Van C;Ngo Thanh Van;15999.0;18/12/2021;ban hang;1;D12;
+HD05;Tran Van Ba;Tran Nguyen Loc;166997.0;17/12/2021;ban hang;3;F01;D01;F02;
+HD09;Tran Nguyen Bao Long;Tran Nguyen Loc;104996.0;19/12/2021;giao hang;4;D01;D02;F09;F07;
+HD05;NGuyen Van C;Tran Loc;63998.0;14/02/2020;giao hang;2;F09;D02;
+HD06;Nguyen ThanH long;Long Nguyen;213996.0;19/12/2021;ban hang;4;F01;F04;F06;D09;
+HD98;Nguyen Ngoc Long;Nguyen huy Hoang;91998.0;12/12/2021;ban hang;2;D02;F01;
+HD99;Tran Y;Nguyen X;88998.0;19/12/2021;giao hang;2;D01;F01;

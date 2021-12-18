@@ -10,16 +10,17 @@ public class HoaDon {
     private String NgayHoaDon;
     private Product[] dssp;
     private int SoLuong;
-
+    private String hinhthuc;
 
     public HoaDon() {
-        idHD=null;
-        tenKH=null;
-        tenNV=null;
-        thanhTien=0.0;
-        NgayHoaDon=null;
-        dssp=null;
-        SoLuong=0;
+        idHD = null;
+        tenKH = null;
+        tenNV = null;
+        thanhTien = 0.0;
+        NgayHoaDon = null;
+        dssp = null;
+        SoLuong = 0;
+        hinhthuc = null;
     }
 
     public String getIdHD() {
@@ -78,13 +79,22 @@ public class HoaDon {
         SoLuong = soLuong;
     }
 
-    static DS_TAN dstan=new DS_TAN();
-    static DS_NU dsnu=new DS_NU();
+    public String getHinhthuc() {
+        return hinhthuc;
+    }
+
+    public void setHinhthuc(String hinhthuc) {
+        this.hinhthuc = hinhthuc;
+    }
+
+    public static DS_TAN dstan = new DS_TAN();
+    public static DS_NU dsnu = new DS_NU();
 
     public void nhapHD() {
         Scanner sc = new Scanner(System.in);
         Matcher c;
         String TempStr;
+        Matcher checkX;
 
         do {
             System.out.print("Nhap id hoa don: ");
@@ -109,6 +119,32 @@ public class HoaDon {
             Pattern b = Pattern.compile(check);
             c = b.matcher(tenNV);
         } while(!c.find());
+
+        int selectX;
+        String selectTempX;
+        do {
+            System.out.println("+---------------------------------------------+");
+            System.out.println("|           Chon hinh thuc van chuyen         |");
+            System.out.println("| -------------------=====--------------------|");
+            System.out.println("| 1. Mua tai cho                              |");
+            System.out.println("| 2. Giao hang tan noi                        |");
+            System.out.println("+---------------------------------------------+");
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTempX = new Scanner(System.in).nextLine();
+                String f = "^[0-9]{1}";
+                Pattern b= Pattern.compile(f);
+                checkX = b.matcher(selectTempX);
+            }
+            while(!checkX.find());
+            selectX = Integer.parseInt(selectTempX);
+
+            switch (selectX) {
+                case 1: hinhthuc = "ban hang"; break;
+                case 2: hinhthuc = "giao hang"; break;
+            }
+        }while(selectX < 1 || selectX > 2);
 
         do {
             System.out.print("So luong san pham: ");
@@ -168,12 +204,6 @@ public class HoaDon {
             c = b.matcher(NgayHoaDon);
         } while(!c.find());
     }
-    
-    @Override
-    public String toString() {
-        return String.format("| %-25s %-30s %-30s %-25.2f %-12s |",
-                idHD,tenKH,tenNV,thanhTien,NgayHoaDon);
-    }
 
     public void xuly(String a) {
         String []chrt = a.split(";");
@@ -182,34 +212,43 @@ public class HoaDon {
         tenNV = chrt[2];
         thanhTien = Double.parseDouble(chrt[3]);
         NgayHoaDon = chrt[4];
-        SoLuong = Integer.parseInt(chrt[5]);
+        hinhthuc = chrt[5];
+        SoLuong = Integer.parseInt(chrt[6]);
         dssp = new Product[SoLuong];
         dsnu.docDSNU();
         dstan.docDSTAN();
-        NU[] SPN=dsnu.getDssp();
-        TAN[] SPTAN=dstan.getDssp();
+        NU[] SPN = dsnu.getDssp();
+        TAN[] SPTAN = dstan.getDssp();
         for (int i=0;i<SoLuong;i++) {
             for (int j = 0; j < SPN.length; j++) {
                 String key = SPN[j].getId();
-                if (key.contentEquals(chrt[6+i])) {
+                if (key.contentEquals(chrt[7+i])) {
                     dssp[i]=SPN[j];
                 }
             }
+
             for (int j = 0; j < SPTAN.length; j++) {
                 String key = SPTAN[j].getId();
-                if (key.contentEquals(chrt[6+i])) {
+                if (key.contentEquals(chrt[7+i])) {
                     dssp[i]=SPTAN[j];
                 }
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("| %-25s %-30s %-30s %-20.2f %-15s %-15s |",
+                idHD,tenKH,tenNV,thanhTien,NgayHoaDon,hinhthuc);
+    }
+
     public void output() {
         System.out.println(toString());
     }
 
     public String xulyLuu() {
-        String s = String.format("%s;%s;%s;%s;%s;",
-                idHD,tenKH,tenNV,thanhTien,NgayHoaDon);
+        String s = String.format("%s;%s;%s;%s;%s;%s;",
+                idHD,tenKH,tenNV,thanhTien,NgayHoaDon,hinhthuc);
         s+=SoLuong+";";
         for (int i=0;i<SoLuong;i++) s+=dssp[i].getId()+";";
         s+="\n";
@@ -217,12 +256,20 @@ public class HoaDon {
     }
 
     public void chitietSP() {
+        printLine();
         System.out.printf("\u001B[44m| %-20s %-25s %-50s %-28s |\u001B[0m",
         "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
         for (int i = 0; i < SoLuong; i++) {
            dssp[i].Xuat();
         }
+        printLine();
     }
 
-
+    public void printLine() {
+        System.out.println();
+        for(int j=0;j<130;j++) {
+            System.out.print("=");
+        }
+        System.out.println();
+    }
 }
