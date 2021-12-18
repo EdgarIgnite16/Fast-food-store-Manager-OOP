@@ -13,6 +13,9 @@ public class Product {
         this.ChiTietSP = null;
         this.stt = count++;
     }
+    public String getId(){
+        return "";
+    }
 
     public Product(String Ten, String ChiTietSP) {
         this.Ten = Ten;

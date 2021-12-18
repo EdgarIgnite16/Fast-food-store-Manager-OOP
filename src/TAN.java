@@ -20,7 +20,7 @@ public class TAN extends Product {
         this.Gia = Gia;
     }
 
-    public String getIdTAN() {
+    public String getId() {
         return IdTAN;
     }
 
@@ -54,7 +54,7 @@ public class TAN extends Product {
     }
 
     public void Xuat() {
-        System.out.printf("\n| %-20s %-25s %-50s %-15s |", IdTAN, ThongtinSP.getTen(), ThongtinSP.getChiTietSP(), Gia);
+        System.out.printf("\n| %-20s %-25s %-50s %-28s |", IdTAN, ThongtinSP.getTen(), ThongtinSP.getChiTietSP(), Gia);
     }
 
     public void xuly(String a) {

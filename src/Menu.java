@@ -379,6 +379,7 @@ public class Menu {
             System.out.println("| 3. Xoa thong tin hoa don                    |");
             System.out.println("| 4. Tim kiem hoa don                         |");
             System.out.println("| 5. Xuat danh sach hoa don                   |");
+            System.out.println("| 6. Xem chi tiet hoa don                     |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
 
@@ -420,7 +421,10 @@ public class Menu {
                     System.out.println("\nBan da chon Xuat ra danh sach hoa don");
                     dshd.printDSHD();
                     break;
-
+                case 6:
+                    System.out.println("\nBan da chon Xem chi tiet hoa don");
+                    dshd.chitietHD();
+                    break;
                 case 0:
                     System.out.println("\nTro ve");
                     break;

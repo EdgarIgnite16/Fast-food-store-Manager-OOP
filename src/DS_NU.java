@@ -22,6 +22,14 @@ public class DS_NU {
         n = 0;
         dssp = null;
     }
+    
+    public NU[] getDssp() {
+        return dssp;
+    }
+
+    public void setDssp(NU[] dssp) {
+        this.dssp = dssp;
+    }
 
     public void printline() {
         System.out.println();
@@ -133,7 +141,7 @@ public class DS_NU {
 
         boolean checking = false;
         for (int i = 0; i < n; i++) {
-            String key = dssp[i].getIdNU();
+            String key = dssp[i].getId();
             if (key.contentEquals(a)) {
                 checking = true;
                 for (int j = i; j < n - 1; j++) {
@@ -164,7 +172,7 @@ public class DS_NU {
 
         boolean checking = false;
         for (int i = 0; i < n; i++) {
-            String key = dssp[i].getIdNU();
+            String key = dssp[i].getId();
             if (key.contentEquals(a)) {
                 checking = true;
                 NU sp = new NU();
@@ -192,7 +200,7 @@ public class DS_NU {
         } while (!c.find());
 
         for (int i = 0; i < n; i++) {
-            String key = dssp[i].getIdNU();
+            String key = dssp[i].getId();
             if (key.contentEquals(a)) {
                 printline();
                 System.out.printf("\n| %-20s %-25s %-50s %-15s |", "Ma san pham", "Ten san pham",

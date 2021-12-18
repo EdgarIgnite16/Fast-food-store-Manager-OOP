@@ -1,3 +1,0 @@
-HD01;Nguyen Thanh Nha;Nguyen Thanh Quang;100000.0;17/12/2021
-HD02;Luong Anh Phung;Nguyen Thanh Quang;102000.0;17/12/2021
-HD03;Nguyen Van B;Tran Khac Tuan;1200000.0;19/12/2021

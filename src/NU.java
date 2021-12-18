@@ -20,7 +20,7 @@ public class NU extends Product {
         this.Gia = Gia;
     }
 
-    public String getIdNU() {
+    public String getId() {
         return IdNU;
     }
 
@@ -52,7 +52,7 @@ public class NU extends Product {
     }
 
     public void Xuat() {
-        System.out.printf("\n| %-20s %-25s %-50s %-15s |",
+        System.out.printf("\n| %-20s %-25s %-50s %-28s |",
                 IdNU, ThongtinSP.getTen(), ThongtinSP.getChiTietSP(), Gia);
     }
 

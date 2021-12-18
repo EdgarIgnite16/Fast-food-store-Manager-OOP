@@ -297,7 +297,7 @@ public class DS_HoaDon {
         String temp;
         do {
             System.out.print("Nhap ID hoa don can xoa: ");
-            temp = new Scanner(System.in).nextLine();
+            temp = sc.nextLine();
             String c = "^HD[0-9]{2}$";
             Pattern b= Pattern.compile(c);
             check = b.matcher(temp);
@@ -322,4 +322,29 @@ public class DS_HoaDon {
             System.out.println("Khong tim thay ma don hang !");
         }
     }
+    public void chitietHD() {
+        String temp;
+        Matcher check;
+        do {
+            System.out.println("Nhap ID Hoa don can xem !");
+            temp = sc.nextLine();
+            String c = "^HD[0-9]{2}$";
+            Pattern b= Pattern.compile(c);
+            check = b.matcher(temp);
+        }
+        while(!check.find());
+        printLine();
+        System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n","ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
+        for(int i=0;i<n;i++) {
+            String key=dshd[i].getIdHD();
+            if(key.contentEquals(temp)) {
+                 dshd[i].output();
+                 dshd[i].chitietSP();
+            }
+        }
+        System.out.println();
+        printLine();
+        System.out.println();
+    }
+    
 }

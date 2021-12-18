@@ -22,6 +22,14 @@ public class DS_TAN {
         n = 0;
         dssp = null;
     }
+    
+    public TAN[] getDssp() {
+        return dssp;
+    }
+
+    public void setDssp(TAN[] dssp) {
+        this.dssp = dssp;
+    }
 
     public void printline() {
         System.out.println();
@@ -133,7 +141,7 @@ public class DS_TAN {
 
         boolean checking = false;
         for (int i = 0; i < n; i++) {
-            String key = dssp[i].getIdTAN();
+            String key = dssp[i].getId();
             if (key.contentEquals(a)) {
                 checking = true;
                 for (int j = i; j < n - 1; j++) {
@@ -164,7 +172,7 @@ public class DS_TAN {
 
         boolean checking = false;
         for (int i = 0; i < n; i++) {
-            String key = dssp[i].getIdTAN();
+            String key = dssp[i].getId();
             if (key.contentEquals(a)) {
                 checking = true;
                 TAN sp = new TAN();
@@ -194,7 +202,7 @@ public class DS_TAN {
 
 //        boolean checking = false;
         for (int i = 0; i < n; i++) {
-            String key = dssp[i].getIdTAN();
+            String key = dssp[i].getId();
             if (key.contentEquals(a)) {
 //                checking = true;
                 printline();
