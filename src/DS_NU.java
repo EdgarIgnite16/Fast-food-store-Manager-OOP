@@ -192,7 +192,4 @@ public class DS_NU {
             dssp[i].Xuat();
         }
     }
-
-
-    
 }
