@@ -65,7 +65,7 @@ public class Product {
 
 
     public void Xuat() {
-        System.out.printf("%-10s %-25s %-15s\n", stt, Ten, ChiTietSP);
+        System.out.printf("\n%-25s %-50\n", Ten, ChiTietSP);
     }
 
 }
