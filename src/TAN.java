@@ -54,7 +54,7 @@ public class TAN extends Product {
     }
 
     public void Xuat() {
-        System.out.printf("\n%-20s %-25s %-50s %-20s\n", IdTAN, ThongtinSP.getTen(), ThongtinSP.getChiTietSP(), Gia);
+        System.out.printf("\n| %-20s %-25s %-50s %-20s |", IdTAN, ThongtinSP.getTen(), ThongtinSP.getChiTietSP(), Gia);
     }
 
     public void xuly(String a) {
