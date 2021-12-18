@@ -33,7 +33,7 @@ public class DS_NU {
 
     public void printline() {
         System.out.println();
-        for (int i = 0; i < 117; i++) {
+        for (int i = 0; i < 130; i++) {
             System.out.print("=");
         }
         System.out.println();
@@ -203,7 +203,7 @@ public class DS_NU {
             String key = dssp[i].getId();
             if (key.contentEquals(a)) {
                 printline();
-                System.out.printf("\n| %-20s %-25s %-50s %-15s |", "Ma san pham", "Ten san pham",
+                System.out.printf("\n| %-20s %-25s %-50s %-28s |", "Ma san pham", "Ten san pham",
                         "Chi tiet SP", "Gia");
                 dssp[i].Xuat();
                 printline();
@@ -214,7 +214,7 @@ public class DS_NU {
 
     public void xuatDSNU() {
         printline();
-        System.out.printf("| %-20s %-25s %-50s %-15s |",
+        System.out.printf("| %-20s %-25s %-50s %-28s |",
                 "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
         for (int i = 0; i < n; i++) {
             dssp[i].Xuat();
