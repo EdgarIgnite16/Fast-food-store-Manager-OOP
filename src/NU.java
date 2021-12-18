@@ -61,13 +61,13 @@ public class NU extends Product {
     public void xuly(String a) {
         String[] chrt = a.split(";");
         IdNU = chrt[0];
-        ThongtinSP.Ten = chrt[1];
-        ThongtinSP.ChiTietSP = chrt[2];
+        ThongtinSP.setTen(chrt[1]);
+        ThongtinSP.setChiTietSP(chrt[2]);
         Gia = chrt[3];
     }
 
     public String xylyLuu() {
-        return IdNU + ";" + ThongtinSP.Ten + ";" + ThongtinSP.ChiTietSP + ";" + Gia + "\n";
+        return IdNU + ";" + ThongtinSP.getTen() + ";" + ThongtinSP.getChiTietSP() + ";" + Gia + "\n";
     }
 
 }
