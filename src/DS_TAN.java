@@ -183,8 +183,8 @@ public class DS_TAN {
         for (int i = 0; i < n; i++) {
             String key = dssp[i].getIdTAN();
             if (key.contentEquals(a) == true) {
-                System.out.println("====================================================");
-                System.out.printf("%-10s %-15s %-25s %-10s %-10s\n", "STT", "Ma san pham", "Ten san pham",
+                System.out.println("\n====================================================");
+                System.out.printf("\n%-20s %-25s %-50s %-20s\n", "Ma san pham", "Ten san pham",
                         "Chi tiet SP", "Gia");
                 dssp[i].Xuat();
                 break;
@@ -193,8 +193,8 @@ public class DS_TAN {
     }
 
     public void xuatDSTAN() {
-        System.out.println("====================================================");
-        System.out.printf("%-10s %-15s %-25s %-10s %-10s\n", "STT", "Ma san pham", "Ten san pham",
+        System.out.println("\n====================================================");
+        System.out.printf("\n%-20s %-25s %-50s %-20s\n", "Ma san pham", "Ten san pham",
                 "Chi tiet SP", "Gia");
         for (int i = 0; i < n; i++) {
             dssp[i].Xuat();
