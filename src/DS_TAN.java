@@ -52,7 +52,7 @@ public class DS_TAN {
 
     public void docDSTAN() {
         try {
-            FileInputStream file = new FileInputStream("./Database/DSTAN.txt");
+            FileInputStream file = new FileInputStream("./database/DSTAN.txt");
             InputStreamReader reader = new InputStreamReader(file, StandardCharsets.UTF_8);
             BufferedReader buffer = new BufferedReader(reader);
             String line = null;
