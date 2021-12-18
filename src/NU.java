@@ -54,7 +54,7 @@ public class NU extends Product {
     }
 
     public void Xuat() {
-        System.out.printf("%-10s %-15s %-25s %-10s %-10s", super.getStt(), IdNU, super.getTen(), super.getChiTietSP(),
+        System.out.printf("%-10s %-15s %-25s %-10s %-10s", ThongtinSP.getStt(), IdNU, ThongtinSP.getTen(), ThongtinSP.getChiTietSP(),
                 Gia);
     }
 
