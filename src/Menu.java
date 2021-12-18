@@ -101,7 +101,7 @@ public class Menu {
                         System.out.println("| 2. Sua thong tin san pham                   |");
                         System.out.println("| 3. Xoa thong tin san pham                   |");
                         System.out.println("| 4. Tim kiem thong tin san pham              |");
-                        System.out.println("| 5. Xuat thong tin san pham                  |");
+                        System.out.println("| 5. Xuat danh sach san pham                  |");
                         System.out.println("| 0. Tro ve                                   |");
                         System.out.println("+---------------------------------------------+");
 
@@ -168,7 +168,7 @@ public class Menu {
                         System.out.println("| 2. Sua thong tin san pham                   |");
                         System.out.println("| 3. Xoa thong tin san pham                   |");
                         System.out.println("| 4. Tim kiem thong tin san pham              |");
-                        System.out.println("| 5. Xuat thong tin san pham                  |");
+                        System.out.println("| 5. Xuat danh sach san pham                  |");
                         System.out.println("| 0. Tro ve                                   |");
                         System.out.println("+---------------------------------------------+");
 
