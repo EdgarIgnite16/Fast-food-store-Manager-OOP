@@ -227,7 +227,6 @@ public class DS_TAN {
             System.out.println("+---------------------------------------------+");
             System.out.println("|              Tim kiem trong DSTAN            |");
             System.out.println("| -------------------=====--------------------|");
-            System.out.println("| 1. Tim kiem theo Id TAN                     |");
             System.out.println("| 2. Tim kiem theo Ten TAN                     |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
@@ -243,30 +242,6 @@ public class DS_TAN {
             select = Integer.parseInt(selectTemp);
 
             switch(select) {
-                case 1:
-                    System.out.println("\nBan da chon tim kiem theo id NU");
-                    do {
-                        System.out.print("Nhap ma nuoc uong can tim: ");
-                        temp = new Scanner(System.in).nextLine();
-                        String c = "^NV[0-9]{2}$";
-                        Pattern b= Pattern.compile(c);
-                        check = b.matcher(temp);
-                    }
-                    while(!check.find());
-
-                    printLine();
-                    System.out.printf("\n| %-10s %-20s  |\n",
-                            "Ma TAN","Ten TAN");
-                    for(int i=0;i<n;i++) {
-                        String key = dssp[i].getIdNV();
-                        if(key.contentEquals(temp)) {
-                            dssp[i].output();
-                            break;
-                        }
-                    }
-                    printLine();
-                    break;
-
                 case 2:
                     System.out.println("\nBan da chon tim kiem theo Id TAN");
                     do {
