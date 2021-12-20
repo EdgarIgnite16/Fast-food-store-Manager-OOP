@@ -125,7 +125,7 @@ public class DS_NhanVien {
                         System.out.print("Nhap ma nhan vien can tim: ");
                         temp = new Scanner(System.in).nextLine();
                         String c = "^NV[0-9]{2}$";
-                        Pattern b= Pattern.compile(c);
+                        Pattern b = Pattern.compile(c);
                         check = b.matcher(temp);
                     }
                     while(!check.find());
@@ -149,7 +149,7 @@ public class DS_NhanVien {
                         System.out.print("Nhap ten nhan vien can tim: ");
                         temp = new Scanner(System.in).nextLine();
                         String c = "[^0-9]";
-                        Pattern b= Pattern.compile(c);
+                        Pattern b = Pattern.compile(c);
                         check = b.matcher(temp);
                     }
                     while(!check.find());
