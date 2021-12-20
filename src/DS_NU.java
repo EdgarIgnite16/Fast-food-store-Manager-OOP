@@ -254,7 +254,7 @@ public class DS_NU {
                     System.out.printf("| %-20s %-25s %-50s %-28s |",
                             "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
                     for (int i = 0; i < n; i++) {
-                        String key = dssp[i].getTen().toLowerCase();
+                        String key = dssp[i].getTenNU().toLowerCase();
                         if (key.contains(temp.toLowerCase())) {
                             dssp[i].Xuat();
                         }
