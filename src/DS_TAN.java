@@ -255,12 +255,12 @@ public class DS_TAN {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                            "Ma NU","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                    System.out.printf("\n| %-10s %-20s  |\n",
+                            "Ma TAN","Ten TAN");
                     for(int i=0;i<n;i++) {
-                        String key = dstan[i].getIdNV();
+                        String key = dssp[i].getIdNV();
                         if(key.contentEquals(temp)) {
-                            dstan[i].output();
+                            dssp[i].output();
                             break;
                         }
                     }
@@ -279,12 +279,12 @@ public class DS_TAN {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                            "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                    System.out.printf("\n| %-10s %-20s  |\n",
+                            "Ma TAN","Ten TAN");
                     for(int i=0;i<n;i++) {
-                        String key = dstan[i].getTen().toLowerCase();
+                        String key = dssp[i].getTen().toLowerCase();
                         if(key.contains(temp.toLowerCase())) {
-                            dstan[i].output();
+                            dssp[i].output();
                         }
                     }
                     printLine();
