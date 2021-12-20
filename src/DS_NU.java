@@ -224,7 +224,6 @@ public class DS_NU {
             System.out.println("+---------------------------------------------+");
             System.out.println("|              Tim kiem trong DSNU            |");
             System.out.println("| -------------------=====--------------------|");
-            System.out.println("| 1. Tim kiem theo Id NU                      |");
             System.out.println("| 2. Tim kiem theo Ten NU                     |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
@@ -240,30 +239,6 @@ public class DS_NU {
             select = Integer.parseInt(selectTemp);
 
             switch(select) {
-                case 1:
-                    System.out.println("\nBan da chon tim kiem theo id NU");
-                    do {
-                        System.out.print("Nhap ma nuoc uong can tim: ");
-                        temp = new Scanner(System.in).nextLine();
-                        String c = "^NV[0-9]{2}$";
-                        Pattern b= Pattern.compile(c);
-                        check = b.matcher(temp);
-                    }
-                    while(!check.find());
-
-                    printLine();
-                    System.out.printf("\n| %-10s %-20s |\n",
-                            "Ma NU","Ten NU");
-                    for(int i=0;i<n;i++) {
-                        String key = dssp[i].getIdNV();
-                        if(key.contentEquals(temp)) {
-                            dssp[i].output();
-                            break;
-                        }
-                    }
-                    printLine();
-                    break;
-
                 case 2:
                     System.out.println("\nBan da chon tim kiem theo ten NU");
                     do {
@@ -276,8 +251,8 @@ public class DS_NU {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                            "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                    System.out.printf("\n| %-10s %-20s |\n",
+                            "Ma NU","Ten NU");
                     for(int i=0;i<n;i++) {
                         String key = dssp[i].getTen().toLowerCase();
                         if(key.contains(temp.toLowerCase())) {
