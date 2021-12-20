@@ -214,7 +214,91 @@ public class DS_TAN {
             }
         }
     }
+     // ------------------------------------------------------------------------------------- //
+    // tim kiem trong ds_tan
+    public void searchDSTAN() {
+        Matcher check;
+        String temp;
+        String selectTemp;
+        int select;
 
+        do {
+            System.out.println("");
+            System.out.println("+---------------------------------------------+");
+            System.out.println("|              Tim kiem trong DSTAN            |");
+            System.out.println("| -------------------=====--------------------|");
+            System.out.println("| 1. Tim kiem theo Id TAN                     |");
+            System.out.println("| 2. Tim kiem theo Ten TAN                     |");
+            System.out.println("| 0. Tro ve                                   |");
+            System.out.println("+---------------------------------------------+");
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
+
+            switch(select) {
+                case 1:
+                    System.out.println("\nBan da chon tim kiem theo id NU");
+                    do {
+                        System.out.print("Nhap ma nuoc uong can tim: ");
+                        temp = new Scanner(System.in).nextLine();
+                        String c = "^NV[0-9]{2}$";
+                        Pattern b= Pattern.compile(c);
+                        check = b.matcher(temp);
+                    }
+                    while(!check.find());
+
+                    printLine();
+                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
+                            "Ma NU","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                    for(int i=0;i<n;i++) {
+                        String key = dstan[i].getIdNV();
+                        if(key.contentEquals(temp)) {
+                            dstan[i].output();
+                            break;
+                        }
+                    }
+                    printLine();
+                    break;
+
+                case 2:
+                    System.out.println("\nBan da chon tim kiem theo Id TAN");
+                    do {
+                        System.out.print("Nhap ten thuc an nhanh can tim: ");
+                        temp = new Scanner(System.in).nextLine();
+                        String c = "[^0-9]";
+                        Pattern b= Pattern.compile(c);
+                        check = b.matcher(temp);
+                    }
+                    while(!check.find());
+
+                    printLine();
+                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
+                            "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                    for(int i=0;i<n;i++) {
+                        String key = dstan[i].getTen().toLowerCase();
+                        if(key.contains(temp.toLowerCase())) {
+                            dstan[i].output();
+                        }
+                    }
+                    printLine();
+                    break;
+                case 0:
+                    System.out.println("\nTro ve");
+                    break;
+
+                default:
+                    System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
+                    break;
+            }
+        }while(select != 0);
+    }
     public void xuatDSTAN() {
         printline();
         System.out.printf("| %-20s %-25s %-50s %-28s |",
