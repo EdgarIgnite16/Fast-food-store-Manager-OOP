@@ -206,8 +206,8 @@ public class DS_TAN {
             if (key.contentEquals(a)) {
 //                checking = true;
                 printline();
-                System.out.printf("\n| %-20s %-25s %-50s %-28s |", "Ma san pham", "Ten san pham",
-                        "Chi tiet SP", "Gia");
+                System.out.printf("\n| %-20s %-25s %-50s %-28s |",
+                        "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
                 dssp[i].Xuat();
                 printline();
                 break;

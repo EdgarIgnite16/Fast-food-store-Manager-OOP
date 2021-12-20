@@ -66,15 +66,15 @@ public class DS_HoaDon {
     }
 
     public static void printLine() {
-        for(int j=0;j<130;j++) {
+        for(int j=0;j<144;j++) {
             System.out.print("=");
         }
     }
 
     public void printDSHD() {
         printLine();
-        System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n",
-                "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien(VND)","Ngay mua");
+        System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-20s %-15s %-15s |\u001B[0m\n",
+                "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien(VND)","Ngay mua","Hinh Thuc");
         for(int i=0;i<n;i++) {
             dshd[i].output();
         }
@@ -97,6 +97,7 @@ public class DS_HoaDon {
             System.out.println("| 2. Tim kiem theo Ten KH                     |");
             System.out.println("| 3. Tim kiem theo Ten NV                     |");
             System.out.println("| 4. Tim kiem theo Ten Ngay                   |");
+            System.out.println("| 5. Tim kiem theo Hinh thuc van chuyen       |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
 
@@ -124,7 +125,8 @@ public class DS_HoaDon {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n","ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
+                    System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n",
+                            "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
                     for(int i=0;i<n;i++) {
                         String key = dshd[i].getIdHD();
                         if(key.contentEquals(temp)) {
@@ -147,7 +149,8 @@ public class DS_HoaDon {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n","ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
+                    System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n",
+                            "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
 
                     for(int i=0;i<n;i++) {
                         String key = dshd[i].getTenKH().toLowerCase();
@@ -170,7 +173,8 @@ public class DS_HoaDon {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n","ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
+                    System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n",
+                            "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
 
                     for(int i=0;i<n;i++) {
                         String key = dshd[i].getTenNV().toLowerCase();
@@ -193,7 +197,8 @@ public class DS_HoaDon {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n","ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
+                    System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n",
+                            "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
 
                     for(int i=0;i<n;i++) {
                         String key = dshd[i].getNgayHoaDon();
@@ -204,11 +209,77 @@ public class DS_HoaDon {
                     printLine();
                     break;
 
+                case 5:
+                    System.out.println("\nBan da chon tim kiem theo hinh thuc van chuyen !");
+                    int select2;
+                    String selectTemp2;
+                    String temp2 = null;
+
+                    do {
+                        System.out.println("");
+                        System.out.println("+---------------------------------------------+");
+                        System.out.println("|              Tim kiem trong DSHD            |");
+                        System.out.println("| -------------------=====--------------------|");
+                        System.out.println("| 1. Ban hang tai cho                         |");
+                        System.out.println("| 2. Giao hang tan noi                        |");
+                        System.out.println("| 0. Tro ve                                   |");
+                        System.out.println("+---------------------------------------------+");
+                        // Regex
+                        do {
+                            System.out.print("Nhap vao lua chon: ");
+                            selectTemp2 = new Scanner(System.in).nextLine();
+                            String c = "^[0-9]{1}";
+                            Pattern b= Pattern.compile(c);
+                            check = b.matcher(selectTemp2);
+                        }
+                        while(!check.find());
+                        select2 = Integer.parseInt(selectTemp2);
+
+                        switch (select2) {
+                            case 1:
+                                System.out.println("\nBan da chon tim kiem theo hinh thuc ban hang tai cho");
+                                temp2 = "ban hang";
+                                printLine();
+                                System.out.printf("\n| %-25s %-30s %-30s %-20s %-15s %-15s |\n",
+                                        "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien(VND)","Ngay mua","Hinh Thuc");
+                                for(int i=0;i<n;i++) {
+                                    String key = dshd[i].getHinhthuc().toLowerCase();
+                                    if(key.contentEquals(temp2.toLowerCase())) {
+                                        dshd[i].output();
+                                    }
+                                }
+                                printLine();
+                                break;
+
+                            case 2:
+                                System.out.println("\nBan da chon tim kiem theo hinh thuc giao hang tan noi");
+                                temp2 = "giao hang";
+                                printLine();
+                                System.out.printf("\n| %-25s %-30s %-30s %-20s %-15s %-15s |\n",
+                                        "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien(VND)","Ngay mua","Hinh Thuc");
+                                for(int i=0;i<n;i++) {
+                                    String key = dshd[i].getHinhthuc().toLowerCase();
+                                    if(key.contentEquals(temp2.toLowerCase())) {
+                                        dshd[i].output();
+                                    }
+                                }
+                                printLine();
+                                break;
+
+                            case 0:
+                                System.out.println("\nTro ve");
+                                break;
+
+                            default:
+                                System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
+                                break;
+                        }
+                    }while (select2 != 0);
+                    break;
 
                 default:
                     if (select==0) break;
                     System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
-                    
             }
         }while(select != 0);
     }
@@ -279,12 +350,13 @@ public class DS_HoaDon {
             String key=dshd[i].getIdHD();
             if(key.contentEquals(temp)) {
                 checking = true;
-                HoaDon hd=new HoaDon();
-                System.out.println("Nhap thong tin hoa don");
+                HoaDon hd = new HoaDon();
+                System.out.println("Nhap thong tin hoa don !");
                 hd.nhapHD();
-                dshd[i]=hd;
+                dshd[i] = hd;
             }
         }
+
         if(checking) {
             updateDSHD();
         }else {
@@ -336,17 +408,17 @@ public class DS_HoaDon {
         while(!check.find());
 
         printLine();
-        System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-25s %-12s |\u001B[0m\n",
-                "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua");
+        System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-20s %-15s %-15s |\u001B[0m\n",
+                "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien","Ngay mua","Hinh Thuc");
         for(int i=0;i<n;i++) {
-            String key=dshd[i].getIdHD();
+            String key = dshd[i].getIdHD();
             if(key.contentEquals(temp)) {
-                 dshd[i].output();
-                 dshd[i].chitietSP();
+                dshd[i].output();
+                printLine();
+                dshd[i].chitietSP();
             }
         }
         System.out.println();
-        printLine();
         System.out.println();
     }
 }
