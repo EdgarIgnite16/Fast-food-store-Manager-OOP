@@ -222,7 +222,7 @@ public class DS_TAN {
                     System.out.println("\nBan da chon tim kiem theo ma thuc an nhanh");
                     do {
                         System.out.print("Nhap ma thuc an nhanh can tim: ");
-                        temp = new Scanner(System.in).nextLine();
+                        temp = sc.nextLine();
                         String c = "^F[0-9]{2}$";
                         Pattern b = Pattern.compile(c);
                         check = b.matcher(temp);
@@ -245,7 +245,7 @@ public class DS_TAN {
                     System.out.println("\nBan da chon tim kiem theo ten thuc an nhanh");
                     do {
                         System.out.print("Nhap ten thuc an nhanh can tim: ");
-                        temp = new Scanner(System.in).nextLine();
+                        temp = sc.nextLine();
                         String c = "[^0-9]";
                         Pattern b = Pattern.compile(c);
                         check = b.matcher(temp);
@@ -255,7 +255,7 @@ public class DS_TAN {
                     System.out.printf("| %-20s %-25s %-50s %-28s |",
                             "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
                     for (int i = 0; i < n; i++) {
-                        String key = dssp[i].getTen().toLowerCase();
+                        String key = dssp[i].getTenTAN().toLowerCase();
                         if (key.contains(temp.toLowerCase())) {
                             dssp[i].Xuat();
                         }
