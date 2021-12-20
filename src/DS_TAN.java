@@ -22,7 +22,7 @@ public class DS_TAN {
         n = 0;
         dssp = null;
     }
-    
+
     public TAN[] getDssp() {
         return dssp;
     }
@@ -152,9 +152,9 @@ public class DS_TAN {
             }
         }
 
-        if(checking) {
+        if (checking) {
             capNhatDSTAN();
-        }else {
+        } else {
             System.out.println("Khong tim thay ma san pham !");
         }
     }
@@ -182,37 +182,95 @@ public class DS_TAN {
             }
         }
 
-        if(checking) {
+        if (checking) {
             capNhatDSTAN();
-        }else {
+        } else {
             System.out.println("Khong tim thay ma san pham !");
         }
     }
 
+    // -------------------------------------------------------------------------------------
+    // //
+    // tim kiem trong ds_tan
     public void timkiemTAN() {
-        Matcher c;
-        String a;
-        do {
-            System.out.print("Nhap ma san pham can tim: ");
-            a = sc.nextLine();
-            String check = "^F[0-9]{2}$";
-            Pattern b = Pattern.compile(check);
-            c = b.matcher(a);
-        } while (!c.find());
+        Matcher check;
+        String temp;
+        String selectTemp;
+        int select;
 
-//        boolean checking = false;
-        for (int i = 0; i < n; i++) {
-            String key = dssp[i].getId();
-            if (key.contentEquals(a)) {
-//                checking = true;
-                printline();
-                System.out.printf("\n| %-20s %-25s %-50s %-28s |",
-                        "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
-                dssp[i].Xuat();
-                printline();
-                break;
+        do {
+            System.out.println("");
+            System.out.println("+---------------------------------------------+");
+            System.out.println("|   Tim kiem trong danh sach thuc an nhanh    |");
+            System.out.println("| -------------------=====--------------------|");
+            System.out.println("| 1. Tim kiem theo ma thuc an nhanh           |");
+            System.out.println("| 2. Tim kiem theo ten thuc an nhanh          |");
+            System.out.println("| 0. Tro ve                                   |");
+            System.out.println("+---------------------------------------------+");
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b = Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            } while (!check.find());
+            select = Integer.parseInt(selectTemp);
+
+            switch (select) {
+                case 1:
+                    System.out.println("\nBan da chon tim kiem theo ma thuc an nhanh");
+                    do {
+                        System.out.print("Nhap ma thuc an nhanh can tim: ");
+                        temp = sc.nextLine();
+                        String c = "^F[0-9]{2}$";
+                        Pattern b = Pattern.compile(c);
+                        check = b.matcher(temp);
+                    } while (!check.find());
+
+                    printline();
+                    System.out.printf("| %-20s %-25s %-50s %-28s |",
+                            "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
+                    for (int i = 0; i < n; i++) {
+                        String key = dssp[i].getId();
+                        if (key.contentEquals(temp)) {
+                            dssp[i].Xuat();
+                            break;
+                        }
+                    }
+                    printline();
+                    break;
+
+                case 2:
+                    System.out.println("\nBan da chon tim kiem theo ten thuc an nhanh");
+                    do {
+                        System.out.print("Nhap ten thuc an nhanh can tim: ");
+                        temp = sc.nextLine();
+                        String c = "[^0-9]";
+                        Pattern b = Pattern.compile(c);
+                        check = b.matcher(temp);
+                    } while (!check.find());
+
+                    printline();
+                    System.out.printf("| %-20s %-25s %-50s %-28s |",
+                            "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
+                    for (int i = 0; i < n; i++) {
+                        String key = dssp[i].getTenTAN().toLowerCase();
+                        if (key.contains(temp.toLowerCase())) {
+                            dssp[i].Xuat();
+                        }
+                    }
+                    printline();
+                    break;
+                case 0:
+                    System.out.println("\nTro ve");
+                    break;
+
+                default:
+                    System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
+                    break;
             }
-        }
+        } while (select != 0);
     }
 
     public void xuatDSTAN() {

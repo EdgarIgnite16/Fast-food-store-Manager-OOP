@@ -68,4 +68,8 @@ public class TAN extends Product {
     public String xylyLuu() {
         return IdTAN + ";" + ThongtinSP.getTen() + ";" + ThongtinSP.getChiTietSP() + ";" + Gia + "\n";
     }
+
+    public String getTenTAN() {
+        return ThongtinSP.getTen();
+    }
 }
