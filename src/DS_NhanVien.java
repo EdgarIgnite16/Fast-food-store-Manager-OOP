@@ -112,7 +112,7 @@ public class DS_NhanVien {
                 System.out.print("Nhap vao lua chon: ");
                 selectTemp = new Scanner(System.in).nextLine();
                 String c = "^[0-9]{1}";
-                Pattern b= Pattern.compile(c);
+                Pattern b = Pattern.compile(c);
                 check = b.matcher(selectTemp);
             }
             while(!check.find());
