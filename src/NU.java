@@ -68,4 +68,8 @@ public class NU extends Product {
         return IdNU + ";" + ThongtinSP.getTen() + ";" + ThongtinSP.getChiTietSP() + ";" + Gia + "\n";
     }
 
+    public String getTenNU(){
+        return ThongtinSP.getTen();
+    }
+
 }
