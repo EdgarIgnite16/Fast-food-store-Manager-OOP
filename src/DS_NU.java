@@ -252,12 +252,12 @@ public class DS_NU {
                     while(!check.find());
 
                     printLine();
-                    System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
-                            "Ma NU","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
+                    System.out.printf("\n| %-10s %-20s |\n",
+                            "Ma NU","Ten NU");
                     for(int i=0;i<n;i++) {
-                        String key = dsnu[i].getIdNV();
+                        String key = dssp[i].getIdNV();
                         if(key.contentEquals(temp)) {
-                            dsnu[i].output();
+                            dssp[i].output();
                             break;
                         }
                     }
@@ -279,9 +279,9 @@ public class DS_NU {
                     System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
                             "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
                     for(int i=0;i<n;i++) {
-                        String key = dsnu[i].getTen().toLowerCase();
+                        String key = dssp[i].getTen().toLowerCase();
                         if(key.contains(temp.toLowerCase())) {
-                            dsnu[i].output();
+                            dssp[i].output();
                         }
                     }
                     printLine();
