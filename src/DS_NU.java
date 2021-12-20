@@ -22,7 +22,7 @@ public class DS_NU {
         n = 0;
         dssp = null;
     }
-    
+
     public NU[] getDssp() {
         return dssp;
     }
@@ -152,9 +152,9 @@ public class DS_NU {
             }
         }
 
-        if(checking){
+        if (checking) {
             capNhatDSNU();
-        }else {
+        } else {
             System.out.println("Khong tim thay ma san pham !");
         }
     }
@@ -181,39 +181,17 @@ public class DS_NU {
                 dssp[i] = sp;
             }
         }
-        if(checking){
+        if (checking) {
             capNhatDSNU();
-        }else {
+        } else {
             System.out.println("Khong tim thay ma san pham !");
         }
     }
 
-    public void timkiemNU() {
-        Matcher c;
-        String a;
-        do {
-            System.out.println("Nhap ma san pham can tim: ");
-            a = sc.nextLine();
-            String check = "^D[0-9]{2}$";
-            Pattern b = Pattern.compile(check);
-            c = b.matcher(a);
-        } while (!c.find());
-
-        for (int i = 0; i < n; i++) {
-            String key = dssp[i].getId();
-            if (key.contentEquals(a)) {
-                printline();
-                System.out.printf("\n| %-20s %-25s %-50s %-28s |", "Ma san pham", "Ten san pham",
-                        "Chi tiet SP", "Gia");
-                dssp[i].Xuat();
-                printline();
-                break;
-            }
-        }
-    }
-      // ------------------------------------------------------------------------------------- //
+    // -------------------------------------------------------------------------------------
+    // //
     // tim kiem trong ds_nu
-    public void searchDSNU() {
+    public void timkiemNU() {
         Matcher check;
         String temp;
         String selectTemp;
@@ -222,9 +200,10 @@ public class DS_NU {
         do {
             System.out.println("");
             System.out.println("+---------------------------------------------+");
-            System.out.println("|              Tim kiem trong DSNU            |");
+            System.out.println("|     Tim kiem trong danh sach nuoc uong      |");
             System.out.println("| -------------------=====--------------------|");
-            System.out.println("| 2. Tim kiem theo Ten NU                     |");
+            System.out.println("| 1. Tim kiem theo ma nuoc uong               |");
+            System.out.println("| 2. Tim kiem theo ten nuoc uong              |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
             // Regex
@@ -232,34 +211,55 @@ public class DS_NU {
                 System.out.print("Nhap vao lua chon: ");
                 selectTemp = new Scanner(System.in).nextLine();
                 String c = "^[0-9]{1}";
-                Pattern b= Pattern.compile(c);
+                Pattern b = Pattern.compile(c);
                 check = b.matcher(selectTemp);
-            }
-            while(!check.find());
+            } while (!check.find());
             select = Integer.parseInt(selectTemp);
 
-            switch(select) {
+            switch (select) {
+                case 1:
+                    System.out.println("\nBan da chon tim kiem theo ma nuoc uong");
+                    do {
+                        System.out.print("Nhap ma nuoc uong can tim: ");
+                        temp = new Scanner(System.in).nextLine();
+                        String c = "^D[0-9]{2}$";
+                        Pattern b = Pattern.compile(c);
+                        check = b.matcher(temp);
+                    } while (!check.find());
+
+                    printline();
+                    System.out.printf("| %-20s %-25s %-50s %-28s |",
+                            "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
+                    for (int i = 0; i < n; i++) {
+                        String key = dssp[i].getId();
+                        if (key.contentEquals(temp)) {
+                            dssp[i].Xuat();
+                            break;
+                        }
+                    }
+                    printline();
+                    break;
+
                 case 2:
-                    System.out.println("\nBan da chon tim kiem theo ten NU");
+                    System.out.println("\nBan da chon tim kiem theo ten nuoc uong");
                     do {
                         System.out.print("Nhap ten nuoc uong can tim: ");
                         temp = new Scanner(System.in).nextLine();
                         String c = "[^0-9]";
-                        Pattern b= Pattern.compile(c);
+                        Pattern b = Pattern.compile(c);
                         check = b.matcher(temp);
-                    }
-                    while(!check.find());
+                    } while (!check.find());
 
-                    printLine();
-                    System.out.printf("\n| %-10s %-20s |\n",
-                            "Ma NU","Ten NU");
-                    for(int i=0;i<n;i++) {
+                    printline();
+                    System.out.printf("| %-20s %-25s %-50s %-28s |",
+                            "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");
+                    for (int i = 0; i < n; i++) {
                         String key = dssp[i].getTen().toLowerCase();
-                        if(key.contains(temp.toLowerCase())) {
-                            dssp[i].output();
+                        if (key.contains(temp.toLowerCase())) {
+                            dssp[i].Xuat();
                         }
                     }
-                    printLine();
+                    printline();
                     break;
                 case 0:
                     System.out.println("\nTro ve");
@@ -269,8 +269,9 @@ public class DS_NU {
                     System.out.println("Khong co lua chon nao nhu nay !\nVui long nhap lai lua chon.");
                     break;
             }
-        }while(select != 0);
+        } while (select != 0);
     }
+
     public void xuatDSNU() {
         printline();
         System.out.printf("| %-20s %-25s %-50s %-28s |",
@@ -282,5 +283,3 @@ public class DS_NU {
 
     }
 }
-
-
