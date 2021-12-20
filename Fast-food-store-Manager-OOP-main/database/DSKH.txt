@@ -1,6 +1,4 @@
-KH01;Luong Anh Phung;Long Tri, Long My, Hau Giang;22;0909051951;KH Normal
 KH02;Hoang Trung Chinh;300/43 Nguyen Van Linh, Quan 7;23;0907248555;KH Normal
-KH03;Dang Huynh Thanh Nhan;41/27 Huong Lo 14, Q.TP;23;0908285117;KH Normal
 KH04;Dang Ngoc Hung;33/5, Tran Binh Trong, P1, Q5;25;0908327657;KH VIP
 KH05;Dinh Thi Hoai Thuong;2/41 Cao Thang P5, Q3;29;0907222605;KH VIP
 KH06;Do Minh Tuan;276 Phan Van Tri, Q.Binh Thanh;32;0918157857;KH Normal

@@ -95,6 +95,7 @@ public class DS_KhachHang {
         Matcher check;
         String temp;
         int select;
+        String selectTemp;
 
         do {
             System.out.println("");
@@ -106,8 +107,17 @@ public class DS_KhachHang {
             System.out.println("| 3. Tim kiem theo Loai Khach Hang            |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select = Integer.parseInt(new Scanner(System.in).nextLine());
+
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
 
             switch(select) {
                 case 1:
@@ -116,7 +126,7 @@ public class DS_KhachHang {
                         System.out.print("Nhap ma nhan vien can tim: ");
                         temp = new Scanner(System.in).nextLine();
                         String c = "KH[0-9]{2}$";
-                        Pattern b= Pattern.compile(c);
+                        Pattern b = Pattern.compile(c);
                         check = b.matcher(temp);
                     }
                     while(!check.find());
@@ -159,8 +169,9 @@ public class DS_KhachHang {
 
                 case 3:
                     System.out.println("\nBan da chon tim kiem theo Loai KH");
-                    String temp2 = null;
                     int select2;
+                    String selectTemp2;
+                    String temp2 = null;
 
                     do {
                         System.out.println("");
@@ -171,8 +182,17 @@ public class DS_KhachHang {
                         System.out.println("| 2. Khach hang VIP                           |");
                         System.out.println("| 0. Tro ve                                   |");
                         System.out.println("+---------------------------------------------+");
-                        System.out.print("Nhap vao lua chon: ");
-                        select2 = Integer.parseInt(new Scanner(System.in).nextLine());
+
+                        // Regex
+                        do {
+                            System.out.print("Nhap vao lua chon: ");
+                            selectTemp2 = new Scanner(System.in).nextLine();
+                            String c = "^[0-9]{1}";
+                            Pattern b= Pattern.compile(c);
+                            check = b.matcher(selectTemp2);
+                        }
+                        while(!check.find());
+                        select2 = Integer.parseInt(selectTemp2);
 
                         switch (select2) {
                             case 1:
@@ -276,6 +296,9 @@ public class DS_KhachHang {
     // them khach hang
     public void insertDSKH() {
         int select2;
+        Matcher check;
+        String selectTemp;
+
         do {
             System.out.println("+---------------------------------------------+");
             System.out.println("|                Them nhan vien               |");
@@ -284,8 +307,16 @@ public class DS_KhachHang {
             System.out.println("| 2. Them khach hang VIP                      |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select2 = Integer.parseInt(new Scanner(System.in).nextLine());
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select2 = Integer.parseInt(selectTemp);
 
             switch (select2) {
                 case 1:
@@ -318,6 +349,8 @@ public class DS_KhachHang {
     public void changeDSKH() {
         Matcher check;
         String temp;
+        String selectTemp;
+
         do {
             System.out.print("Nhap ma khach hang can thay doi: ");
             temp = new Scanner(System.in).nextLine();
@@ -327,9 +360,11 @@ public class DS_KhachHang {
         }
         while(!check.find());
 
+        boolean checking = false;
         for(int i=0;i<n;i++) {
             String key= dskh[i].getIdKH();
             if(key.contentEquals(temp)) {
+                checking = true;
                 System.out.println("Sua thong tin khach hang !");
                 KhachHang kh = new KhachHang();
                 kh.insertKH();
@@ -342,8 +377,16 @@ public class DS_KhachHang {
                     System.out.println("| 1. Thay doi thanh khach hang Normal         |");
                     System.out.println("| 2. Thay doi thanh khach hang VIP            |");
                     System.out.println("+---------------------------------------------+");
-                    System.out.print("Nhap vao lua chon: ");
-                    selectX = Integer.parseInt(new Scanner(System.in).nextLine());
+                    // Regex
+                    do {
+                        System.out.print("Nhap vao lua chon: ");
+                        selectTemp = new Scanner(System.in).nextLine();
+                        String c = "^[0-9]{1}";
+                        Pattern b= Pattern.compile(c);
+                        check = b.matcher(selectTemp);
+                    }
+                    while(!check.find());
+                    selectX = Integer.parseInt(selectTemp);
 
                     switch (selectX) {
                         case 1: kh.KhachHangNor(); break;
@@ -355,7 +398,11 @@ public class DS_KhachHang {
                 break;
             }
         }
-        updateDSKH();
+        if(checking) {
+            updateDSKH();
+        }else {
+            System.out.println("khong tim thay ma khach hang !");
+        }
     }
 
     // ------------------------------------------------------------------------------------- //
@@ -372,9 +419,11 @@ public class DS_KhachHang {
         }
         while(!check.find());
 
+        boolean checking = false;
         for(int i=0;i<n;i++) {
             String key= dskh[i].getIdKH();
             if(key.contentEquals(temp)) {
+                checking = true;
                 for(int j=i;j<n-1;j++) {
                     dskh[j] = dskh[j+1];
                 }
@@ -382,6 +431,11 @@ public class DS_KhachHang {
                 dskh = Arrays.copyOf(dskh, n);
             }
         }
-        updateDSKH();
+
+        if(checking) {
+            updateDSKH();
+        } else  {
+            System.out.println("Khong tim thay ma khach hang vua nhap !");
+        }
     }
 }

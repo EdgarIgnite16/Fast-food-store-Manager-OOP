@@ -94,6 +94,7 @@ public class DS_NhanVien {
     public void searchDSNV() {
         Matcher check;
         String temp;
+        String selectTemp;
         int select;
 
         do {
@@ -106,8 +107,16 @@ public class DS_NhanVien {
             System.out.println("| 3. Tim kiem theo Chuc vu                    |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select = Integer.parseInt(new Scanner(System.in).nextLine());
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select = Integer.parseInt(selectTemp);
 
             switch(select) {
                 case 1:
@@ -159,8 +168,9 @@ public class DS_NhanVien {
 
                 case 3:
                     System.out.println("\nBan da chon tim kiem theo Chuc vu NV");
-                    String temp2 = null;
                     int select2;
+                    String selectTemp2;
+                    String temp2 = null;
 
                     do {
                         System.out.println("");
@@ -172,8 +182,16 @@ public class DS_NhanVien {
                         System.out.println("| 3. NV Giao Hang                             |");
                         System.out.println("| 0. Tro ve                                   |");
                         System.out.println("+---------------------------------------------+");
-                        System.out.print("Nhap vao lua chon: ");
-                        select2 = Integer.parseInt(new Scanner(System.in).nextLine());
+                        // Regex
+                        do {
+                            System.out.print("Nhap vao lua chon: ");
+                            selectTemp2 = new Scanner(System.in).nextLine();
+                            String c = "^[0-9]{1}";
+                            Pattern b= Pattern.compile(c);
+                            check = b.matcher(selectTemp2);
+                        }
+                        while(!check.find());
+                        select2 = Integer.parseInt(selectTemp2);
 
                         switch (select2) {
                             case 1:
@@ -290,6 +308,8 @@ public class DS_NhanVien {
     // ------------------------------------------------------------------------------------- //
     // them nhan vien
     public void insertDSNV() {
+        Matcher check;
+        String selectTemp;
         int select2;
         do {
             System.out.println("+---------------------------------------------+");
@@ -300,8 +320,16 @@ public class DS_NhanVien {
             System.out.println("| 3. Them nhan vien Quan ly                   |");
             System.out.println("| 0. Tro ve                                   |");
             System.out.println("+---------------------------------------------+");
-            System.out.print("Nhap vao lua chon: ");
-            select2 = Integer.parseInt(new Scanner(System.in).nextLine());
+            // Regex
+            do {
+                System.out.print("Nhap vao lua chon: ");
+                selectTemp = new Scanner(System.in).nextLine();
+                String c = "^[0-9]{1}";
+                Pattern b= Pattern.compile(c);
+                check = b.matcher(selectTemp);
+            }
+            while(!check.find());
+            select2 = Integer.parseInt(selectTemp);
 
             switch (select2) {
                 case 1:
@@ -353,14 +381,17 @@ public class DS_NhanVien {
         }
         while(!check.find());
 
+        boolean checking = false;
         for(int i=0;i<n;i++) {
-            String key= dsnv[i].getIdNV();
+            String key = dsnv[i].getIdNV();
             if(key.contentEquals(temp)) {
+                checking = true;
                 System.out.println("Sua thong tin nhan vien !");
                 NhanVien nv = new NhanVien();
                 nv.insertNV();
 
                 int selectX;
+                String selectTempX;
                 do {
                     System.out.println("+---------------------------------------------+");
                     System.out.println("|                Thay doi Chuc vu             |");
@@ -369,8 +400,16 @@ public class DS_NhanVien {
                     System.out.println("| 2. Thay doi thanh nhan vien Giao hang       |");
                     System.out.println("| 3. Thay doi thanh nhan vien Quan Ly         |");
                     System.out.println("+---------------------------------------------+");
-                    System.out.print("Nhap vao lua chon: ");
-                    selectX = Integer.parseInt(new Scanner(System.in).nextLine());
+                    // Regex
+                    do {
+                        System.out.print("Nhap vao lua chon: ");
+                        selectTempX = new Scanner(System.in).nextLine();
+                        String c = "^[0-9]{1}";
+                        Pattern b= Pattern.compile(c);
+                        check = b.matcher(selectTempX);
+                    }
+                    while(!check.find());
+                    selectX = Integer.parseInt(selectTempX);
 
                     switch (selectX) {
                         case 1: nv.ChucVuBanHang(); break;
@@ -383,7 +422,11 @@ public class DS_NhanVien {
                 break;
             }
         }
-        updateDSNV();
+        if(checking) {
+            updateDSNV();
+        }else {
+            System.out.println("khong tim thay ma nhan vien vua nhap !");
+        }
     }
 
     // ------------------------------------------------------------------------------------- //
@@ -400,9 +443,11 @@ public class DS_NhanVien {
         }
         while(!check.find());
 
+        boolean checking = false;
         for(int i=0;i<n;i++) {
             String key= dsnv[i].getIdNV();
             if(key.contentEquals(temp)) {
+                checking = true;
                 for(int j=i;j<n-1;j++) {
                     dsnv[j] = dsnv[j+1];
                 }
@@ -410,6 +455,11 @@ public class DS_NhanVien {
                 dsnv = Arrays.copyOf(dsnv, n);
             }
         }
-        updateDSNV();
+
+        if(checking) {
+            updateDSNV();
+        } else  {
+            System.out.println("Khong tim thay ma nhan vien vua nhap !");
+        }
     }
 }
