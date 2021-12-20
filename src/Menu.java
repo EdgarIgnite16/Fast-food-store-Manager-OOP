@@ -139,6 +139,7 @@ public class Menu {
 
                             case 4:
                                 System.out.println("\nBan da chon Tim kiem thong tin thuc an nhanh");
+                                dstan.timkiemTAN();
                                 break;
 
                             case 5:
