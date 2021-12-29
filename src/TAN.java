@@ -14,12 +14,6 @@ public class TAN extends Product {
         this.Gia = null;
     }
 
-    public TAN(String IdTAN, String Ten, String ChiTietSP, String Gia) {
-        super(Ten, ChiTietSP);
-        this.IdTAN = IdTAN;
-        this.Gia = Gia;
-    }
-
     public String getId() {
         return IdTAN;
     }
@@ -46,8 +40,7 @@ public class TAN extends Product {
             c = b.matcher(IdTAN);
         } while (!c.find());
 
-        ThongtinSP.Nhap();
-
+        ThongtinSP.Nhap(); // ham nhap nay la ham nhap tu product
         System.out.print("Nhap gia thuc an nhanh: ");
         Gia = sc.nextLine();
 

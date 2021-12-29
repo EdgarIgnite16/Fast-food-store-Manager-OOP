@@ -79,16 +79,6 @@ public class KhachHang extends Person{
         }while(!check.find());
     }
 
-    public void xuly(String a) {
-        String []chrt= a.split(";");
-        idKH = chrt[0];
-        String TenKH = chrt[1]; super.setTen(TenKH);
-        String DiaChiKH = chrt[2]; super.setDiaChi(DiaChiKH);
-        String tuoiKH = chrt[3]; super.setTuoi(tuoiKH);
-        String SdtKH = chrt[4]; super.setSDT(SdtKH);
-        LoaiKH = chrt[5];
-    }
-
     public void LoaiKH() {
         LoaiKH = "????";
     }
@@ -101,6 +91,18 @@ public class KhachHang extends Person{
         this.LoaiKH = "KH VIP";
     }
 
+    @Override
+    public void xuly(String a) {
+        String []chrt= a.split(";");
+        idKH = chrt[0];
+        String TenKH = chrt[1]; super.setTen(TenKH);
+        String DiaChiKH = chrt[2]; super.setDiaChi(DiaChiKH);
+        String tuoiKH = chrt[3]; super.setTuoi(tuoiKH);
+        String SdtKH = chrt[4]; super.setSDT(SdtKH);
+        LoaiKH = chrt[5];
+    }
+
+    @Override
     public String xulyLuu() {
         return String.format("%s;%s;%s;%s;%s;%s\n",
                 idKH, super.getTen(), super.getDiaChi(), super.getTuoi(), super.getSDT(), LoaiKH);
@@ -112,6 +114,7 @@ public class KhachHang extends Person{
                 idKH, super.getTen(), super.getDiaChi(), super.getTuoi(), super.getSDT(), LoaiKH);
     }
 
+    @Override
     public void output() {
         System.out.println(toString());
     }

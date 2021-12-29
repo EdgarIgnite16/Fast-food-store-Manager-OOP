@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DS_NU {
+public class DS_NU implements LoaiDanhSach{
     private int n;
     private NU[] dssp;
     Scanner sc = new Scanner(System.in);
@@ -39,6 +39,8 @@ public class DS_NU {
         System.out.println();
     }
 
+    // ------------------------------------------------------------------------------------- //
+    // dem so luong nuoc uong
     public int demNU() {
         int dem = 0;
         try {
@@ -61,6 +63,8 @@ public class DS_NU {
         return dem;
     }
 
+    // ------------------------------------------------------------------------------------- //
+    // doc danh sach nuoc uong
     public void docDSNU() {
         try {
             FileInputStream file = new FileInputStream("./database/DSNU.txt");
@@ -86,6 +90,8 @@ public class DS_NU {
         }
     }
 
+    // ------------------------------------------------------------------------------------- //
+    // cap nhat danh sach nuoc uong
     public void capNhatDSNU() {
         FileOutputStream fos = null;
         try {
@@ -117,7 +123,9 @@ public class DS_NU {
         }
     }
 
-    public void themNU(NU sp) {
+    // ------------------------------------------------------------------------------------- //
+    // them sp nuoc uong vao tron danh sach nuoc uong
+    public void addNU(NU sp) {
         dssp = Arrays.copyOf(dssp, n + 1);
         for (int i = 0; i < n + 1; i++) {
             if (i == n) {
@@ -128,7 +136,18 @@ public class DS_NU {
         capNhatDSNU();
     }
 
-    public void xoaNU() {
+    // 5 chuc nang chinh co ban cua quan li danh sach
+    // ------------------------------------------------------------------------------------- //
+    // them san pham
+    public void Them() {
+        NU nuocuong = new NU();
+        nuocuong.Nhap();
+        addNU(nuocuong);
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    // xoa san pham
+    public void Xoa() {
         Matcher c;
         String a;
         do {
@@ -159,7 +178,9 @@ public class DS_NU {
         }
     }
 
-    public void suaNU() {
+    // ------------------------------------------------------------------------------------- //
+    // sua thong tin san pham
+    public void Sua() {
         Matcher c;
         String a;
         do {
@@ -188,10 +209,9 @@ public class DS_NU {
         }
     }
 
-    // -------------------------------------------------------------------------------------
-    // //
-    // tim kiem trong ds_nu
-    public void timkiemNU() {
+    // ------------------------------------------------------------------------------------- //
+    // tim kiem thon tin san pham
+    public void TimKiem() {
         Matcher check;
         String temp;
         String selectTemp;
@@ -272,7 +292,9 @@ public class DS_NU {
         } while (select != 0);
     }
 
-    public void xuatDSNU() {
+    // ------------------------------------------------------------------------------------- //
+    // hien thi thong tin san pham
+    public void HienThi() {
         printline();
         System.out.printf("| %-20s %-25s %-50s %-28s |",
                 "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");

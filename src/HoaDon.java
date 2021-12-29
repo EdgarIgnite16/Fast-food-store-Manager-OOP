@@ -12,6 +12,9 @@ public class HoaDon {
     private int SoLuong;
     private String hinhthuc;
 
+    public static DS_TAN dstan = new DS_TAN();
+    public static DS_NU dsnu = new DS_NU();
+
     public HoaDon() {
         idHD = null;
         tenKH = null;
@@ -21,6 +24,14 @@ public class HoaDon {
         dssp = null;
         SoLuong = 0;
         hinhthuc = null;
+    }
+
+    public void printLine() {
+        System.out.println();
+        for(int j=0;j<130;j++) {
+            System.out.print("=");
+        }
+        System.out.println();
     }
 
     public String getIdHD() {
@@ -86,9 +97,6 @@ public class HoaDon {
     public void setHinhthuc(String hinhthuc) {
         this.hinhthuc = hinhthuc;
     }
-
-    public static DS_TAN dstan = new DS_TAN();
-    public static DS_NU dsnu = new DS_NU();
 
     public void nhapHD() {
         Scanner sc = new Scanner(System.in);
@@ -236,6 +244,15 @@ public class HoaDon {
         }
     }
 
+    public String xulyLuu() {
+        String s = String.format("%s;%s;%s;%s;%s;%s;",
+                idHD,tenKH,tenNV,thanhTien,NgayHoaDon,hinhthuc);
+        s+=SoLuong+";";
+        for (int i=0;i<SoLuong;i++) s+=dssp[i].getId()+";";
+        s+="\n";
+        return s;
+    }
+
     @Override
     public String toString() {
         return String.format("| %-25s %-30s %-30s %-20.2f %-15s %-15s |",
@@ -246,15 +263,6 @@ public class HoaDon {
         System.out.println(toString());
     }
 
-    public String xulyLuu() {
-        String s = String.format("%s;%s;%s;%s;%s;%s;",
-                idHD,tenKH,tenNV,thanhTien,NgayHoaDon,hinhthuc);
-        s+=SoLuong+";";
-        for (int i=0;i<SoLuong;i++) s+=dssp[i].getId()+";";
-        s+="\n";
-        return s;
-    }
-
     public void chitietSP() {
         printLine();
         System.out.printf("\u001B[44m| %-20s %-25s %-50s %-28s |\u001B[0m",
@@ -263,13 +271,5 @@ public class HoaDon {
            dssp[i].Xuat();
         }
         printLine();
-    }
-
-    public void printLine() {
-        System.out.println();
-        for(int j=0;j<130;j++) {
-            System.out.print("=");
-        }
-        System.out.println();
     }
 }

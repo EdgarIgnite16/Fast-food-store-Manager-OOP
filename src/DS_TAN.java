@@ -13,10 +13,10 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DS_TAN {
-    Scanner sc = new Scanner(System.in);
+public class DS_TAN implements LoaiDanhSach{
     private int n;
     private TAN[] dssp;
+    Scanner sc = new Scanner(System.in);
 
     public DS_TAN() {
         n = 0;
@@ -39,6 +39,7 @@ public class DS_TAN {
         System.out.println();
     }
 
+    // ------------------------------------------------------------------------------------- //
     public int demTAN() {
         int dem = 0;
         try {
@@ -61,6 +62,7 @@ public class DS_TAN {
         return dem;
     }
 
+    // ------------------------------------------------------------------------------------- //
     public void docDSTAN() {
         try {
             FileInputStream file = new FileInputStream("./database/DSTAN.txt");
@@ -86,6 +88,7 @@ public class DS_TAN {
         }
     }
 
+    // ------------------------------------------------------------------------------------- //
     public void capNhatDSTAN() {
         FileOutputStream fos = null;
         try {
@@ -117,7 +120,8 @@ public class DS_TAN {
         }
     }
 
-    public void themTAN(TAN sp) {
+    // ------------------------------------------------------------------------------------- //
+    public void addTAN(TAN sp) {
         dssp = Arrays.copyOf(dssp, n + 1);
         for (int i = 0; i < n + 1; i++) {
             if (i == n) {
@@ -128,7 +132,15 @@ public class DS_TAN {
         capNhatDSTAN();
     }
 
-    public void xoaTAN() {
+    // ------------------------------------------------------------------------------------- //
+    public void Them() {
+        TAN fastfood = new TAN();
+        fastfood.Nhap();
+        addTAN(fastfood);
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    public void Xoa() {
         Matcher c;
         String a;
         do {
@@ -159,7 +171,8 @@ public class DS_TAN {
         }
     }
 
-    public void suaTAN() {
+    // ------------------------------------------------------------------------------------- //
+    public void Sua() {
         Matcher c;
         String a;
         do {
@@ -189,10 +202,8 @@ public class DS_TAN {
         }
     }
 
-    // -------------------------------------------------------------------------------------
-    // //
-    // tim kiem trong ds_tan
-    public void timkiemTAN() {
+    // ------------------------------------------------------------------------------------- //
+    public void TimKiem() {
         Matcher check;
         String temp;
         String selectTemp;
@@ -273,7 +284,8 @@ public class DS_TAN {
         } while (select != 0);
     }
 
-    public void xuatDSTAN() {
+    // ------------------------------------------------------------------------------------- //
+    public void HienThi() {
         printline();
         System.out.printf("| %-20s %-25s %-50s %-28s |",
                 "Ma san pham", "Ten san pham", "Chi tiet SP", "Gia");

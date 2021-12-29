@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DS_KhachHang {
+public class DS_KhachHang implements LoaiDanhSach{
     private int n;
     private KhachHang[] dskh;
 
@@ -16,7 +16,7 @@ public class DS_KhachHang {
         dskh = null;
     }
 
-    public void printLine() {
+    public static void printLine() {
         for(int j=0;j<154;j++) {
             System.out.print("=");
         }
@@ -77,8 +77,54 @@ public class DS_KhachHang {
     }
 
     // ------------------------------------------------------------------------------------- //
+    // cap nhat dsnv
+    public void updateDSKH() {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream("./database/DSKH.txt");
+            for(int i=0;i<n;i++) {
+                String line = dskh[i].xulyLuu();
+                try{
+                    byte[] infor = line.getBytes("utf8");
+                    try {
+                        fos.write(infor);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Cap nhat du lieu thanh cong !!!");
+        }catch (FileNotFoundException ex) {
+            Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            if(fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    // ham them thong tin vao danh sach kh
+    public void addKH(KhachHang kh) {
+        dskh = Arrays.copyOf(dskh, n+1);
+        for(int i=0;i<n+1;i++) {
+            if(i == n) dskh[i] = kh;
+        }
+        n++;
+        updateDSKH();
+    }
+
+    // 5 chuc nang chinh co ban cua quan li danh sach
+    // ------------------------------------------------------------------------------------- //
     // in ra dskh
-    public void printDSKH() {
+    public void HienThi() {
         printLine();
         System.out.printf("\n| %-10s %-30s %-40s %-20s %-25s %-20s |\n",
                 "Ma KH","Ho Ten","Dia Chi","Tuoi","So dien thoai", "Loai khach hang");
@@ -91,7 +137,7 @@ public class DS_KhachHang {
 
     // ------------------------------------------------------------------------------------- //
     // tim kiem trong dskh
-    public void searchDSKH() {
+    public void TimKiem() {
         Matcher check;
         String temp;
         int select;
@@ -249,52 +295,8 @@ public class DS_KhachHang {
     }
 
     // ------------------------------------------------------------------------------------- //
-    // update dsnv
-    public void updateDSKH() {
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream("./database/DSKH.txt");
-            for(int i=0;i<n;i++) {
-                String line = dskh[i].xulyLuu();
-                try{
-                    byte[] infor = line.getBytes("utf8");
-                    try {
-                        fos.write(infor);
-                    } catch (IOException ex) {
-                        Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            System.out.println("Cap nhat du lieu thanh cong !!!");
-        }catch (FileNotFoundException ex) {
-            Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally {
-            if(fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(DS_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
-
-    // ------------------------------------------------------------------------------------- //
-    public void addKH(KhachHang kh) {
-        dskh = Arrays.copyOf(dskh, n+1);
-        for(int i=0;i<n+1;i++) {
-            if(i == n) dskh[i] = kh;
-        }
-        n++;
-        updateDSKH();
-    }
-
-    // ------------------------------------------------------------------------------------- //
     // them khach hang
-    public void insertDSKH() {
+    public void Them() {
         int select2;
         Matcher check;
         String selectTemp;
@@ -346,7 +348,7 @@ public class DS_KhachHang {
 
     // ------------------------------------------------------------------------------------- //
     // sua thong tin khach hang
-    public void changeDSKH() {
+    public void Sua() {
         Matcher check;
         String temp;
         String selectTemp;
@@ -407,7 +409,7 @@ public class DS_KhachHang {
 
     // ------------------------------------------------------------------------------------- //
     // xoa thong tin nhan vien
-    public void deleteDSKH() {
+    public void Xoa() {
         Matcher check;
         String temp;
         do {

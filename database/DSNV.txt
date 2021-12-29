@@ -7,5 +7,6 @@ NV08;Phan Tan Dat;555 Le Van Viet Quan TD;23;0905670928;NV giao hang;8.000.000vn
 NV09;Vu Van Thanh;1099 Pham Van Dong Quan GV;21;0901230929;NV quan ly;15.000.000vnd
 NV21;Tran Gia Bao;174 Quan Tan Binh;28;0808029889;NV ban hang;10.000.000vnd
 NV17;Le Anh Tai;Phu Tho, Quan 11, TpHCM;30;0987654321;Nv giao hang;8.000.000vnd
-NV15;Tran Nguyen Loc;174/4 Dao Tong Nguyen;23;0707029548;Nv quan ly;15.000.000vnd
-NV99;Tran Van Hai;1824 Quan 7;29;0909028974;NV quan ly;15.000.000vnd
+NV15;Tran Nguyen Loc;174/4 Dao Tong Nguyen;26;0707029548;NV giao hang;12.000.000vnd
+NV16;Vo Tan Loc;999 QUan 12, CU HCi;28;0909029888;NV quan ly;15.000.000vnd
+NV99;Tester68;999 Quang Trung;19;0909299777;NV ban hang;10.000.000vnd

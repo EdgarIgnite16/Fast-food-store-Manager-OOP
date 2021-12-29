@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DS_NhanVien {
+public class DS_NhanVien implements LoaiDanhSach {
     private int n;
     private NhanVien[] dsnv;
 
@@ -16,7 +16,7 @@ public class DS_NhanVien {
         dsnv = null;
     }
 
-    public void printLine() {
+    public static void printLine() {
         for(int j=0;j<130;j++) {
             System.out.print("=");
         }
@@ -77,8 +77,54 @@ public class DS_NhanVien {
     }
 
     // ------------------------------------------------------------------------------------- //
+    // cap nhat dsnv
+    public void updateDSNV() {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream("./database/DSNV.txt");
+            for(int i=0;i<n;i++) {
+                String line = dsnv[i].xulyLuu();
+                try{
+                    byte[] infor = line.getBytes("utf8");
+                    try {
+                        fos.write(infor);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Cap nhat du lieu thanh cong !!!");
+        }catch (FileNotFoundException ex) {
+            Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            if(fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    // ham them thong tin vao danh sach nv
+    public void addNV(NhanVien nv) {
+        dsnv = Arrays.copyOf(dsnv, n+1);
+        for(int i=0;i<n+1;i++) {
+            if(i == n) dsnv[i] = nv;
+        }
+        n++;
+        updateDSNV();
+    }
+
+    // 5 chuc nang chinh co ban cua quan li danh sach
+    // ------------------------------------------------------------------------------------- //
     // in ra dsnv
-    public void printDSNV() {
+    public void HienThi() {
         printLine();
         System.out.printf("\n| %-10s %-20s %-30s %-10s %-15s %-15s %-20s |\n",
                 "Ma NV","Ho Ten","Dia Chi","Tuoi","So dien thoai","Chuc vu","Luong");
@@ -91,7 +137,7 @@ public class DS_NhanVien {
 
     // ------------------------------------------------------------------------------------- //
     // tim kiem trong dsnv
-    public void searchDSNV() {
+    public void TimKiem() {
         Matcher check;
         String temp;
         String selectTemp;
@@ -262,52 +308,8 @@ public class DS_NhanVien {
     }
 
     // ------------------------------------------------------------------------------------- //
-    // update dsnv
-    public void updateDSNV() {
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream("./database/DSNV.txt");
-            for(int i=0;i<n;i++) {
-                String line = dsnv[i].xulyLuu();
-                try{
-                    byte[] infor = line.getBytes("utf8");
-                    try {
-                        fos.write(infor);
-                    } catch (IOException ex) {
-                        Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            System.out.println("Cap nhat du lieu thanh cong !!!");
-        }catch (FileNotFoundException ex) {
-            Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally {
-            if(fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(DS_NhanVien.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
-
-    // ------------------------------------------------------------------------------------- //
-    public void addNV(NhanVien nv) {
-        dsnv = Arrays.copyOf(dsnv, n+1);
-        for(int i=0;i<n+1;i++) {
-            if(i == n) dsnv[i] = nv;
-        }
-        n++;
-        updateDSNV();
-    }
-
-    // ------------------------------------------------------------------------------------- //
     // them nhan vien
-    public void insertDSNV() {
+    public void Them() {
         Matcher check;
         String selectTemp;
         int select2;
@@ -369,7 +371,7 @@ public class DS_NhanVien {
 
     // ------------------------------------------------------------------------------------- //
     // sua thong tin nhan vien
-    public void changeDSNV() {
+    public void Sua() {
         Matcher check;
         String temp;
         do {
@@ -431,7 +433,7 @@ public class DS_NhanVien {
 
     // ------------------------------------------------------------------------------------- //
     // xoa thong tin nhan vien
-    public void deleteDSNV() {
+    public void Xoa() {
         Matcher check;
         String temp;
         do {

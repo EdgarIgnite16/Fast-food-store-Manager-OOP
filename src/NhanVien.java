@@ -112,6 +112,7 @@ public class NhanVien extends Person{
         this.Luong = "15.000.000vnd";
     }
 
+    @Override
     public void xuly(String a) {
         String []chrt= a.split(";");
         idNV = chrt[0];
@@ -123,6 +124,7 @@ public class NhanVien extends Person{
         Luong = chrt[6];
     }
 
+    @Override
     public String xulyLuu() {
         return String.format("%s;%s;%s;%s;%s;%s;%s\n",
                 idNV, super.getTen(), super.getDiaChi(), super.getTuoi(), super.getSDT(), ChucVu, Luong);
@@ -134,6 +136,7 @@ public class NhanVien extends Person{
                 idNV, super.getTen(), super.getDiaChi(), super.getTuoi(), super.getSDT(), ChucVu, Luong);
     }
 
+    @Override
     public void output() {
         System.out.println(toString());
     }

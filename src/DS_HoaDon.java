@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DS_HoaDon {
+public class DS_HoaDon implements LoaiDanhSach{
     private int n;
     private HoaDon[] dshd;
     Scanner sc = new Scanner(System.in);
@@ -17,6 +17,14 @@ public class DS_HoaDon {
         dshd = null;
     }
 
+    public static void printLine() {
+        for(int j=0;j<144;j++) {
+            System.out.print("=");
+        }
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    // dem so luong hoa don
     public int countHD() {
         int count = 0;
         try {
@@ -40,6 +48,8 @@ public class DS_HoaDon {
         return count;
     }
 
+    // ------------------------------------------------------------------------------------- //
+    // doc du lieu danh sach hoa don
     public void readDSHD() {
         try {
             FileInputStream file = new FileInputStream("./database/DSHD.txt");
@@ -65,13 +75,54 @@ public class DS_HoaDon {
         }
     }
 
-    public static void printLine() {
-        for(int j=0;j<144;j++) {
-            System.out.print("=");
+    // ------------------------------------------------------------------------------------- //
+    // cap nhat danh sach hoa don
+    public void updateDSHD() {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream("./database/DSHD.txt");
+            for(int i=0;i<n;i++) {
+                String line = dshd[i].xulyLuu();
+                try{
+                    byte[] infor = line.getBytes("utf8");
+                    try {
+                        fos.write(infor);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.out.println("Cap nhat du lieu thanh cong !!!");
+        }catch (FileNotFoundException ex) {
+            Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            if(fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
 
-    public void printDSHD() {
+    // ------------------------------------------------------------------------------------- //
+    // ham them hoa don vao danh sach hoa don
+    public void addHD(HoaDon hd) {
+        dshd = Arrays.copyOf(dshd, n+1);
+        for(int i=0;i<n+1;i++) {
+            if(i == n) dshd[i] = hd;
+        }
+        n++;
+        updateDSHD();
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    // HienThi danh sach
+    public void HienThi() {
         printLine();
         System.out.printf("\n\u001B[44m| %-25s %-30s %-30s %-20s %-15s %-15s |\u001B[0m\n",
                 "ID Hoa Don","Ten Khach Hang","Ten Nhan Vien","Thanh Tien(VND)","Ngay mua","Hinh Thuc");
@@ -82,7 +133,9 @@ public class DS_HoaDon {
         System.out.println();
     }
 
-    public void searchDSHD() {
+    // ------------------------------------------------------------------------------------- //
+    // Tim kiem trong danh sach
+    public void TimKiem() {
         Matcher check;
         String temp;
         String selectTemp;
@@ -284,48 +337,9 @@ public class DS_HoaDon {
         }while(select != 0);
     }
 
-    public void updateDSHD() {
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream("./database/DSHD.txt");
-            for(int i=0;i<n;i++) {
-                String line = dshd[i].xulyLuu();
-                try{
-                    byte[] infor = line.getBytes("utf8");
-                    try {
-                        fos.write(infor);
-                    } catch (IOException ex) {
-                        Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            System.out.println("Cap nhat du lieu thanh cong !!!");
-        }catch (FileNotFoundException ex) {
-            Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally {
-            if(fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(DS_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
-
-    public void addHD(HoaDon hd) {
-        dshd = Arrays.copyOf(dshd, n+1);
-        for(int i=0;i<n+1;i++) {
-            if(i == n) dshd[i] = hd;
-        }
-        n++;
-        updateDSHD();
-    }
-
-    public void insertDSHD() {
+    // ------------------------------------------------------------------------------------- //
+    // them du lieu vao danh sach
+    public void Them() {
         System.out.println("\u001B[44m|              Them Hoa Don            |\u001B[0m");
         HoaDon hd = new HoaDon();
         hd.nhapHD();
@@ -333,7 +347,9 @@ public class DS_HoaDon {
         System.out.println("\u001B[44m|      Them Hoa Don thanh cong         |\u001B[0m");
     }
 
-    public void changeDSHD() {
+    // ------------------------------------------------------------------------------------- //
+    // sua thong tin hoa don
+    public void Sua() {
         Matcher check;
         String temp;
         String c;
@@ -364,7 +380,9 @@ public class DS_HoaDon {
         }
     }
 
-    public void deleteHD() {
+    // ------------------------------------------------------------------------------------- //
+    // xoa hoa don
+    public void Xoa() {
         Matcher check;
         String temp;
         do {
@@ -395,6 +413,8 @@ public class DS_HoaDon {
         }
     }
 
+    // ------------------------------------------------------------------------------------- //
+    // hien thi chi tiet hoa don
     public void chitietHD() {
         String temp;
         Matcher check;

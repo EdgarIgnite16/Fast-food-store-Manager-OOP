@@ -62,8 +62,6 @@ public class Menu {
         } while (select != 0);
     }
 
-
-
     public void dsSanPham() {
         Matcher check;
         String selectTemp;
@@ -118,33 +116,30 @@ public class Menu {
                         DS_TAN dstan = new DS_TAN();
                         dstan.docDSTAN();
 
-
                         switch (selectX) {
                             case 1:
                                 System.out.println("\nBan da chon Them thong tin thuc an nhanh");
-                                TAN sp = new TAN();
-                                sp.Nhap();
-                                dstan.themTAN(sp);
+                                dstan.Them();
                                 break;
 
                             case 2:
                                 System.out.println("\nBan da chon Sua thong tin thuc an nhanh");
-                                dstan.suaTAN();
+                                dstan.Sua();
                                 break;
 
                             case 3:
                                 System.out.println("\nBan da chon Xoa thong tin thuc an nhanh");
-                                dstan.xoaTAN();
+                                dstan.Xoa();
                                 break;
 
                             case 4:
                                 System.out.println("\nBan da chon Tim kiem thong tin thuc an nhanh");
-                                dstan.timkiemTAN();
+                                dstan.TimKiem();
                                 break;
 
                             case 5:
                                 System.out.println("\nBan da chon Xuat ra danh sach thuc an nhanh");
-                                dstan.xuatDSTAN();
+                                dstan.HienThi();
                                 break;
 
                             case 0:
@@ -190,29 +185,27 @@ public class Menu {
                         switch (selectY) {
                             case 1:
                                 System.out.println("\nBan da chon Them thong tin nuoc uong");
-                                NU sp = new NU();
-                                sp.Nhap();
-                                dsnu.themNU(sp);
+                                dsnu.Them();
                                 break;
 
                             case 2:
                                 System.out.println("\nBan da chon Sua thong tin nuoc uong");
-                                dsnu.suaNU();
+                                dsnu.Sua();
                                 break;
 
                             case 3:
                                 System.out.println("\nBan da chon Xoa thong tin nuoc uong");
-                                dsnu.xoaNU();
+                                dsnu.Xoa();
                                 break;
 
                             case 4:
                                 System.out.println("\nBan da chon Tim kiem thong tin nuoc uong");
-                                dsnu.timkiemNU();
+                                dsnu.TimKiem();
                                 break;
 
                             case 5:
                                 System.out.println("\nBan da chon Xuat ra danh sach nuoc uong");
-                                dsnu.xuatDSNU();
+                                dsnu.HienThi();
                                 break;
 
                             case 0:
@@ -265,27 +258,27 @@ public class Menu {
             switch (select) {
                 case 1:
                     System.out.println("\nBan da chon Them thong tin nhan vien");
-                    dsnv.insertDSNV();
+                    dsnv.Them();
                     break;
 
                 case 2:
                     System.out.println("\nBan da chon Sua thong tin nhan vien");
-                    dsnv.changeDSNV();
+                    dsnv.Sua();
                     break;
 
                 case 3:
                     System.out.println("\nBan da chon Xoa thong tin nhan vien");
-                    dsnv.deleteDSNV();
+                    dsnv.Xoa();
                     break;
 
                 case 4:
                     System.out.println("\nBan da chon Tim kiem thong tin nhan vien");
-                    dsnv.searchDSNV();
+                    dsnv.TimKiem();
                     break;
 
                 case 5:
                     System.out.println("\nBan da chon Xuat ra danh sach nhan vien");
-                    dsnv.printDSNV();
+                    dsnv.HienThi();
                     break;
 
                 case 0:
@@ -332,27 +325,27 @@ public class Menu {
             switch (select) {
                 case 1:
                     System.out.println("\nBan da chon Them thong tin khach hang");
-                    dskh.insertDSKH();
+                    dskh.Them();
                     break;
 
                 case 2:
                     System.out.println("\nBan da chon Sua thong tin khach hang");
-                    dskh.changeDSKH();
+                    dskh.Sua();
                     break;
 
                 case 3:
                     System.out.println("\nBan da chon Xoa thong tin khach hang");
-                    dskh.deleteDSKH();
+                    dskh.Xoa();
                     break;
 
                 case 4:
                     System.out.println("\nBan da chon Tim kiem thong tin khach hang");
-                    dskh.searchDSKH();
+                    dskh.TimKiem();
                     break;
 
                 case 5:
                     System.out.println("\nBan da chon Xuat ra danh sach khach hang");
-                    dskh.printDSKH();
+                    dskh.HienThi();
                     break;
 
                 case 0:
@@ -400,27 +393,27 @@ public class Menu {
             switch (select) {
                 case 1:
                     System.out.println("\nBan da chon Them hoa don");
-                    dshd.insertDSHD();
+                    dshd.Them();
                     break;
 
                 case 2:
                     System.out.println("\nBan da chon Sua thong tin hoa don");
-                    dshd.changeDSHD();
+                    dshd.Sua();
                     break;
 
                 case 3:
                     System.out.println("\nBan da chon Xoa thong tin hoa don");
-                    dshd.deleteHD();
+                    dshd.Xoa();
                     break;
 
                 case 4:
                     System.out.println("\nBan da chon Tim kiem tim kiem hoa don");
-                    dshd.searchDSHD();
+                    dshd.TimKiem();
                     break;
 
                 case 5:
                     System.out.println("\nBan da chon Xuat ra danh sach hoa don");
-                    dshd.printDSHD();
+                    dshd.HienThi();
                     break;
 
                 case 6:

@@ -6,6 +6,3 @@ KH07;Do Bich Huong;57/65 Tran Binh Trong, P1, Q5;21;0987663777;KH Normal
 KH08;Dinh Thi My Thanh;31 Tran Chanh Chieu, P14, Q5;12;0903190490;KH Normal
 KH09;Dao Trung Thu;A73 Ấp 1 Pham Van Hai, H Binh Chanh;33;0909096979;KH VIP
 KH10;Dang Thi Bich Lieu;246/28 Phan Huy Ich, P12, Q Go Vap;34;0983637404;KH VIP
-KH11;Bui Ba Hong;B16 Song Hanh An PHu, Q2;31;0909522702;KH Normal
-KH16;Tran Nguyen Loc;15 Lac Long Quan, Tp HCM;44;0932447520;KH Normal
-KH17;Tran Van Hai;174/4 Quan 12;72;0707029548;KH Normal

@@ -6,6 +6,6 @@ HD05;Tran Van Ba;Tran Nguyen Loc;166997.0;17/12/2021;ban hang;3;F01;D01;F02;
 HD09;Tran Nguyen Bao Long;Tran Nguyen Loc;104996.0;19/12/2021;giao hang;4;D01;D02;F09;F07;
 HD05;NGuyen Van C;Tran Loc;63998.0;14/02/2020;giao hang;2;F09;D02;
 HD06;Nguyen ThanH long;Long Nguyen;213996.0;19/12/2021;ban hang;4;F01;F04;F06;D09;
-HD98;Nguyen Ngoc Long;Nguyen huy Hoang;91998.0;12/12/2021;ban hang;2;D02;F01;
-HD50;Tran Loc;Nguyen Thanh Quang;123997.0;21/12/2021;giao hang;3;D02;F05;F04;
+HD98;nguyen ngoc long;tran loc ;102997.0;29/09/2021;giao hang;3;D01;D02;F01;
 HD50;Tran Loc;Nguyen Thanh Quang;152996.0;12/12/2021;ban hang;4;F02;F04;D01;D02;
+HD99;Tester 78;Tran Thanh Sang;148997.0;22/12/2021;giao hang;3;D01;F05;F02;

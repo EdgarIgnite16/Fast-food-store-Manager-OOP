@@ -14,12 +14,6 @@ public class NU extends Product {
         this.Gia = null;
     }
 
-    public NU(String IdNU, String Ten, String ChiTietSP, String Gia) {
-        super(Ten, ChiTietSP);
-        this.IdNU = IdNU;
-        this.Gia = Gia;
-    }
-
     public String getId() {
         return IdNU;
     }
@@ -46,7 +40,7 @@ public class NU extends Product {
             c = b.matcher(IdNU);
         } while (!c.find());
 
-        ThongtinSP.Nhap();
+        ThongtinSP.Nhap(); // ham nhap nay la ham nhap tu product
         System.out.print("Nhap gia nuoc uong: ");
         Gia = sc.nextLine();
     }
@@ -71,5 +65,4 @@ public class NU extends Product {
     public String getTenNU(){
         return ThongtinSP.getTen();
     }
-
 }

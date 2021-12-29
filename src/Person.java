@@ -1,4 +1,4 @@
-public class Person {
+public abstract class Person {
     private String Ten;
     private String DiaChi;
     private String SDT;
@@ -42,4 +42,8 @@ public class Person {
     public void setTuoi(String tuoi) {
         this.Tuoi = tuoi;
     }
+
+    public abstract void xuly(String a);
+    public abstract String xulyLuu();
+    public abstract void output();
 }
