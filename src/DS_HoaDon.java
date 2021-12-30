@@ -55,8 +55,9 @@ public class DS_HoaDon implements LoaiDanhSach{
             FileInputStream file = new FileInputStream("./database/DSHD.txt");
             InputStreamReader reader = new InputStreamReader(file, StandardCharsets.UTF_8);
             BufferedReader buffer = new BufferedReader(reader);
+
             String line = null;
-            int dem = 0;
+
             try {
                 n = countHD();
                 dshd = new HoaDon[n];

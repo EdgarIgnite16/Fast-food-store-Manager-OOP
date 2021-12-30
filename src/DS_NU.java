@@ -31,7 +31,7 @@ public class DS_NU implements LoaiDanhSach{
         this.dssp = dssp;
     }
 
-    public void printline() {
+    public static void printline() {
         System.out.println();
         for (int i = 0; i < 130; i++) {
             System.out.print("=");
@@ -70,7 +70,9 @@ public class DS_NU implements LoaiDanhSach{
             FileInputStream file = new FileInputStream("./database/DSNU.txt");
             InputStreamReader reader = new InputStreamReader(file, StandardCharsets.UTF_8);
             BufferedReader buffer = new BufferedReader(reader);
+
             String line = null;
+
             try {
 
                 n = demNU();
