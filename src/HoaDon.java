@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -73,7 +74,7 @@ public class HoaDon {
     public void setNgayHoaDon(String ngayHoaDon) {
         NgayHoaDon = ngayHoaDon;
     }
-    
+
     public Product[] getDssp() {
         return dssp;
     }
@@ -104,6 +105,9 @@ public class HoaDon {
         String TempStr;
         Matcher checkX;
 
+        DS_HoaDon dshd = new DS_HoaDon();
+        dshd.readDSHD();
+
         do {
             System.out.print("Nhap id hoa don: ");
             idHD = sc.nextLine();
@@ -111,7 +115,7 @@ public class HoaDon {
             Pattern a = Pattern.compile(check);
             c = a.matcher(idHD);
         } while(!c.find());
-        
+
         do {
             System.out.print("Nhap ho ten khach hang: ");
             tenKH = sc.nextLine();
@@ -185,8 +189,8 @@ public class HoaDon {
             for (int j = 0; j < SPN.length; j++) {
                 String key = SPN[j].getId();
                 if (key.contentEquals(MASP)) {
-                    dssp[i]=SPN[j];
-                    thanhTien+=Double.parseDouble(SPN[j].getGia());
+                    dssp[i] = SPN[j];
+                    thanhTien += Double.parseDouble(SPN[j].getGia());
                     check = true;
                 }
             }
@@ -194,8 +198,8 @@ public class HoaDon {
             for (int j = 0; j < SPTAN.length; j++) {
                 String key = SPTAN[j].getId();
                 if (key.contentEquals(MASP)) {
-                    dssp[i]=SPTAN[j];
-                    thanhTien+=Double.parseDouble(SPTAN[j].getGia());
+                    dssp[i] = SPTAN[j];
+                    thanhTien += Double.parseDouble(SPTAN[j].getGia());
                     check=true;
                 }
             }
@@ -211,6 +215,27 @@ public class HoaDon {
             Pattern b = Pattern.compile(check);
             c = b.matcher(NgayHoaDon);
         } while(!c.find());
+
+
+        // xử lí trường hợp khách hàng là khách hàng vip thì được giảm 10% thành tiền trong hoá đơn
+        DS_KhachHang dskh = new DS_KhachHang();
+        dskh.readDSKH();
+        for(int x=0;x<dskh.countKH();x++) {
+            String name = dskh.getTenKH(x);
+            String type = dskh.getloaiKH(x);
+            String tempTenKH = tenKH.toLowerCase();
+            if(tempTenKH.equals(name.toLowerCase()) && type.equals("KH VIP")) {
+                System.out.println("Giam 10% tong hoa don vi khach hang la KH VIP");
+                thanhTien = thanhTien - thanhTien * 0.1;
+                break;
+            }
+        }
+
+        // nếu là giao hàng tận nơi thì tăng 15k tiền ship
+        if(hinhthuc.equals("giao hang")) {
+            System.out.println("Khach hang su dung hinh thuc giao hang tan noi ! Hoa don tang them 15k");
+            thanhTien = thanhTien + 15000;
+        }
     }
 
     public void xuly(String a) {

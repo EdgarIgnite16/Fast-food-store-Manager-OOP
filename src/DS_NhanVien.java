@@ -56,7 +56,6 @@ public class DS_NhanVien implements LoaiDanhSach {
             BufferedReader buffer = new BufferedReader(reader);
 
             String line = null;
-            int dem = 0;
 
             try {
                 n = countNV();

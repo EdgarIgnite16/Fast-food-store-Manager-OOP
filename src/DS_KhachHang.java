@@ -56,7 +56,6 @@ public class DS_KhachHang implements LoaiDanhSach{
             BufferedReader buffer = new BufferedReader(reader);
 
             String line = null;
-            int dem = 0;
 
             try {
                 n = countKH();
@@ -119,6 +118,18 @@ public class DS_KhachHang implements LoaiDanhSach{
         }
         n++;
         updateDSKH();
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    // tra ve kich thuoc cua danh sach khach hang tai vi tri thu i
+    public String getTenKH(int i) {
+        return dskh[i].getTen();
+    }
+
+    // ------------------------------------------------------------------------------------- //
+    // tra ve kich thuoc cua danh sach khach hang tai vi tri thu i
+    public String getloaiKH(int i) {
+        return dskh[i].getLoaiKH();
     }
 
     // 5 chuc nang chinh co ban cua quan li danh sach
@@ -423,7 +434,7 @@ public class DS_KhachHang implements LoaiDanhSach{
 
         boolean checking = false;
         for(int i=0;i<n;i++) {
-            String key= dskh[i].getIdKH();
+            String key = dskh[i].getIdKH();
             if(key.contentEquals(temp)) {
                 checking = true;
                 for(int j=i;j<n-1;j++) {
