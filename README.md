@@ -1,7 +1,7 @@
 # Fast-food-store-Manager-OOP
 - Đô án OOP giữa kì
 
-# Thành Viên Nhóm
+## Team member
 | TenSV              | MaSV       |
 |--------------------|------------|
 | Trần Nguyên Lộc    | 3120410297 |
