@@ -1,7 +1,7 @@
 package OverideCore;
 
 import AbstractCore.LoaiNhanVien;
-import HandleConstructor.NhanVien;
+import BaseConstructor.NhanVien;
 
 public class NVGiaoHang extends NhanVien implements LoaiNhanVien {
     @Override
